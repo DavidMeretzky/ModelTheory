@@ -1,0 +1,90 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 1 Universal Algebra \\
+Section 2 Free Algebras \\
+Exercises 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+February 4th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}[2.6] 
+$T$ consists of one unary operation, and $F$ is the free $T$-algebra on a one element set $X = \{x_0\}$. How many elements are there in $F_n$? How many elements are there in $F$?
+\end{problem}
+
+\begin{proof}[2.6 Solution]
+The set $F$ is defined as the union of recursively defined $F_n$, for $n \in \mathbb{N}$.  To begin, $F_0 = T_0 \cup X$. Since the type $T$ has only one unary operation, $T_0 = \emptyset$ and $F_0 = \{x_0\}$. Suppose for all $k < n$ we have defined $F_k$. Define $F_n = \{(t, a_1, ..., a_k)|t \in T, ar(t) = k, a_i \in F_{r_i}, \sum_{i=1}^{k} r_i = n - 1 \}$. 
+
+In the case where $n = 1$, $n-1 = 0$, therefore all of the $r_i = 0$ so $a_i \in F_0$. Since $F_0 = {x_0}$ there is only one element each $a_i$ can be. Therefore there is only one $a = x_0$. In this case $k = 1$, and we have a single arity $1$ function $t \in T$. Therefore there is one element in $F_1$, namely, $F_1 = {(t, x_0)}$. 
+
+Generally, each $F_n$ contains only one element $(t,(t,(t,....(t,x_0)...)))$. The element obtained by n applications of the arity 1 operation written in prefix notation. 
+
+$F$ has a countable infinity of elements. 
+\end{proof}
+
+\begin{problem}[2.7] 
+If $T$ is empty and $X$ is any set, show that X is the free $T$-algebra on $X$. 
+\end{problem}
+\begin{proof}[Solution 2.7] 
+Trivially, $X$ satisfies the requirements for being a $T$-algebra. In fact, any set is a $T$-algebra when $T$ is empty. Let $A$ be any other set and $f$ a set map from $X$ to $A$. Then the inclusion $\sigma:X\rightarrow X$ which takes the set $X$ to itself with empty $T$-algebra structure admits a unique homomorphism from the trivial algebra $X$ to the trivial algebra $A$. Since there are no operators in $T$, the function $f$ will do perfectly. It trivially is seen to preserve the absent operators on the algebra $X$. Therefore, $f\circ i = f$
+\end{proof}
+
+\begin{problem}[2.8]
+$T$ consists of a single binary operation, and $F$ is the free $T$-algebraon a one element set $X$. How many elements are there in $F$?
+\end{problem}
+\begin{proof}[Solution 2.8]
+Again $F_0 = {x_0}$. 
+When $k = 2$ then we may add elements to higher $F_n$. For n = 1, the sum of the $r_i$ must be $0$. Therefore, $F_1 = {(t,x_0,x_0)}$. The 2-tuples which sum to 1 are $(0,1)$ and $(1,0)$, Therefore we obtain, $F_2 = {(t,x_0,(t,x_0,x_0)),(t,(t,x_0,x_0),x_0)}$. Similarly we can compute $F_n$ for any $n$. They with Bell's Numbers. Therefore there are countably infinitely many elements in $F$. 
+\end{proof}
+\begin{problem}[2.9]
+If T consists of one $0$-ary operation and one $2$-ary operation, and if $X = \emptyset$, then the free $T$-algebra $F$ on $X$ is countable. 
+\end{problem}
+\begin{proof}[Solution 2.9]
+There is a recursive formula for the number of elements in any $F_n$ Given by $\abs{F_n} = \abs{F_{n-1}}+\sum_{i=1}^{n-1}\abs{F_i\times F_{n-1-i}}$. Since $\abs{F_0} = 1$ the free $T$-algebra $F$ on $X$ is countable.
+\end{proof}
+\begin{problem}[2.10]
+$T$ is finite or countable, and contains at least one $0$-ary operation and at least one operation $t$ with $ar(t)>0$. $X$ is finite or countable. Prove that F is countable.  
+\end{problem}
+\begin{proof}[Solution 2.10]
+The cardinality of $F_n$ at each level is countable, and there are a countable infinity of levels, therefore, $F$, the union of all $F_n$ is countable.  
+\end{proof}
+\end{document}
+
+
