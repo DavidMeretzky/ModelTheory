@@ -1,0 +1,80 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 2 Propositional Calculus \\
+Section 3 Truth in Propositional Calculus \\
+Exercises 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+February 4th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}[3.6] 
+Show that $\{F\}\models p$ for all $p \in P(x)$
+\end{problem}
+
+\begin{proof}[3.6 Solution]
+$p = \sim\sim$$p$
+Therefore, given any valuation $v$ with the property that $v(F) = 1$ we have $v(\sim\sim$$p) = v(1+\sim$$p(1+F))=v(1+\sim$$p(1+1)) = v(1+\sim$$p*0) = 1$. Therefore $\{F\}$ semantically implies $p$ for all $p \in P(X)$. 
+\end{proof}
+
+\begin{problem}[3.7 a] 
+Show that $\{p, p\Rightarrow q\}\models q$ for all $p,q \in P(x)$.
+\end{problem}
+\begin{proof}[Solution 3.7 a] 
+We have, $1 = v(1+p(1+q))$ and $v(p) = 1$. Therefore, since $v$ is a homomorphism, $1 = v(1+1(1+q))$ this means that $1 = 1 + v(1+q)$ so $0 = 1 + v(q)$ therefore we have $v(q) = 1$. 
+\end{proof}
+
+\begin{problem}[3.7 b] 
+Show that $\{p, \sim$$q\Rightarrow \sim$$p\}\models q$ for all $p,q \in P(x)$
+\end{problem}
+
+\begin{proof}[Solution 3.7 b] 
+We have, $1 = v(1 + \sim$$q(1+\sim$$p))$ and $v(p) = 1$. Therefore, $v(\sim$$p) = 0$. Therefore,$1 = v(1 + \sim$$q(1+\sim$$p)) = v(1+\sim$$q(1+0)) = v(1+\sim$$q)$. We finally obtain $0 = v(\sim$$q)$ which implies, $v(q) = 1$.
+\end{proof}
+
+\begin{problem}[3.8]
+Show that $p \Rightarrow (p \Rightarrow q)$ is a tautology. 
+\end{problem}
+\begin{proof}[Solution 3.8]
+$v(p \Rightarrow (p \Rightarrow q)) = v(1+ p(1+ p \Rightarrow q)) = v(1+ p(1+1+p(1+q))) = v(1+p(q(1+p)) = 1$ When $p = 0$ this expression values to $v(1+0(q(1+p))) = 1$. Similarly, when $p = 1$ this expression values to $v(1+1(q(1+1))) = v(1+(q*0)) = v(1) = 1$. Therefore, regardless of what $q$ is, this expression is always true. 
+\end{proof}
+\end{document}
+
+
