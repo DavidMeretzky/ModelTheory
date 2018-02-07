@@ -45,6 +45,15 @@ February 4th, 2018
 
 \maketitle
 
+\begin{flushleft}
+\textbf{Definition 3.1}
+A $valuation$ of P(X) is a proposition algebra homomorphism $v:P(X) \rightarrow \mathbb{Z}_2$. We say that $p \in P(X)$ is $\textit{true with respect to v}$ if $v(p) = 1$, and that $p$ is $\textit{false with respect to v}$ if $v(p) = 0.$
+\end{flushleft}
+\begin{flushleft}
+\textbf{Definition 3.2}
+Let $A\subseteq P(x)$ and $q \in P(x)$. We say that $q$ is a $consequence$ of the set $A$ of assumptions, or that $\textit{A semantically implies q}$, if $v(q) = 1$ for every valuation $v$ such that $v(p) = 1$ for all $p \in A$. We shall write this $A \models q$, and we shall denote by $Con(A)$, the set $\{p\in P(X)|A\models p\}$ of all consequences of $A$.
+\end{flushleft}
+
 \begin{problem}[3.6] 
 Show that $\{F\}\models p$ for all $p \in P(x)$
 \end{problem}
