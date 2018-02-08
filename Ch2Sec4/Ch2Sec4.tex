@@ -1,0 +1,97 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 2 Propositional Calculus \\
+Section 4 Proof in The Propositional Calculus \\
+Exercises 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+February 7th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{flushleft}
+For the propositional calculus on the set $X$, we take as axioms all elements of the subset $\mathscr{A} = \mathscr{A}_1 \cup \mathscr{A}_2 \cup \mathscr{A}_3$ 
+of $P(X)$, where 
+\end{flushleft}
+
+\begin{flushleft}
+$\mathscr{A}_1 = \{p \Rightarrow (q \Rightarrow p)|p,q \in P(X) \}$ 
+
+$\mathscr{A}_2 = \{(p \Rightarrow (q \Rightarrow r)) \Rightarrow ((p \Rightarrow q)\Rightarrow (p \Rightarrow r))|p,q,r \in P(X) \}$ and 
+
+$\mathscr{A}_3 = \{\sim$$\sim$$p\Rightarrow p|p \in P(X) \}$.
+\end{flushleft}
+
+\begin{flushleft}
+As our one rule of inference, we take the rule known as modus ponens: from $p$ and $p\Rightarrow q$, deduce $q$. We may now give a formal definition of a proof. 
+\end{flushleft}
+
+\begin{flushleft}
+\textbf{Definition 4.1}
+Let $q \in P(X)$ and let $A \subseteq P(X)$. In the propositional calculus on the set $X$, a $\textit{proof of q from the assumptions A}$ is a finite sequence $p_1, p_2,$ ... $p_n$ of elements $p_i \in P(X)$ such that $p_n = q$ and for each $i$, either $p_i \in \mathscr{A} \cup A$ or for some $j,k < i$ we have $p_k = (p_j \Rightarrow p_i)$.
+\end{flushleft}
+\begin{flushleft}
+\textbf{Definition 4.2}
+Let $q \in P(X)$ and let $A \subseteq P(X)$. We say that $q$ is a $\textit{deduction}$ from $A$, or $q$ is $provable$ from $A$, or that $A$ $syntactically$ $implies$ $q$, if there exists a proof of $q$ from $A$. We shall write this as $\vdash$, and we shall denote by $Ded(A)$ the set of all deduction from $A$.  
+\end{flushleft}
+
+\begin{problem}[4.9] 
+Show that $Ded(A)$ is the smallest subset $D$ of $P(X)$ such that $\mathscr{A} \cup A \subseteq D$ and closed under modus ponens. 
+\end{problem}
+
+\begin{proof}[4.9 Solution]
+Pick any $r \in Ded(A)$. We will show that it must be in any other subset $D$ of $P(X)$ satisfying the above requirements. This is sufficient to show that $Ded(A) \subseteq D$. 
+
+Since $r \in Ded(A)$, there exists a proof of $r$. If the proof is of length $1$, then $r \in \mathscr{A} \cup A$ and therefore in $D$, and we are finished. The result follows inductively, suppose it holds that $r \in D$ for all $r$ with proofs of up to length $n-1$. Then either $p_n = r \in \mathscr{A} \cup A$ or for some $i,j<n$ $p_i = p_j \Rightarrow r$ in which case since $p_i$ and $p_j$ have proofs of length $n-1$ or less, $p_j$ and $p_j$ lie in $D$.  By closure under modus ponens, $r \in D$. 
+
+Therefore, $Ded(A) \subseteq D$ for all such $D$ and is thus the smallest, ordered by inclusions. 
+\end{proof}
+
+\begin{problem}[4.10] 
+Construct a proof in the propositional calculus of $p \Rightarrow r$ from the assumptions $A = \{p\Rightarrow q, q\Rightarrow r\}$. 
+\end{problem}
+\begin{proof}[4.10] 
+By assumption, $(q \Rightarrow r) \in Ded(A)$. Let $p_1 = (q \Rightarrow r)$. Axiom $1$ of $\mathscr{A}$ says that $p_1 \Rightarrow (p \Rightarrow p_1) \in \mathscr{A} \cup A$ and is therefore in $Ded(A)$.\\\\We have, $p_1 \in Ded(A)$ and $p_1 \Rightarrow (p \Rightarrow p_1) \in Ded(A)$. By modus ponens, $p \Rightarrow p_1 \in Ded(A)$. Applying Axiom $2$ to $(p \Rightarrow p_1) = (p \Rightarrow (q \Rightarrow r))$, We obtain $((p \rightarrow q) \Rightarrow (p \Rightarrow r))$. Noting that we began with the assumption $(p \rightarrow q)$, by modus ponens we obtain $(p \Rightarrow r)$.
+\end{proof}
+
+
+
+\end{document}
+
+
