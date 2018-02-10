@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 FEB 2018 01:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  10 FEB 2018 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -598,11 +598,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
 Here is how much of TeX's memory you used:
  13461 strings out of 493014
  275805 string characters out of 6133351
- 313830 words of memory out of 5000000
+ 314831 words of memory out of 5000000
  16722 multiletter control sequences out of 15000+600000
  12624 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,8n,84p,692b,201s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,8n,84p,693b,201s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
@@ -615,7 +615,7 @@ mr7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/m
 sbm10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/rsfs/rsfs10.pf
 b>
-Output written on Ch3Sec2.pdf (2 pages, 123389 bytes).
+Output written on Ch3Sec2.pdf (2 pages, 124411 bytes).
 PDF statistics:
  58 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream

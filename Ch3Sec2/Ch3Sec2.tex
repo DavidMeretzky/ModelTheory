@@ -91,7 +91,7 @@ $p \Rightarrow r$                                        Modus Ponens\\
 \begin{proof}[Solution 2.6]
 Now we give the outlined proof of The Deduction Theorem. Suppose first that $A \vdash p \Rightarrow q$. Adding anything to our assumptions will not remove any deductions. Thus, $A \cup \{p\} \vdash p \Rightarrow q$ remains true. Modus ponens applied to any proof of $p \Rightarrow q$, along with $p$, results in a valid proof of $q$. Therefore, $A \cup \{p\} \vdash q$. 
 
-Suppose now $A \cup \{p\} \vdash q$. We want to show that $A \vdash p \Rightarrow q$. Let n be the length of proof of $p \Rightarrow q$. Suppose that it is true for all $p_i$ with proofs of length $n-1$ or less that $A \cup \{p\} \vdash p_i$ implies that $A \vdash p Rightarrow p_i$. If $q \notin A \cup \mathscr{A}$, (the alternative takes care of the base case of the induction), then the last step in a proof of $q$ from $A \cup \{p\}$ would be modus ponens. Therefore, there exists some $p_i$ deducible from $A \cup \{p\}$ which equals $p_j \Rightarrow q$ where $p_j$ is also deducible from $A \cup \{p\}$, both of which have proofs of length strictly less than $n-1$. 
+Suppose now $A \cup \{p\} \vdash q$. We want to show that $A \vdash p \Rightarrow q$. Let n be the length of proof of $p \Rightarrow q$. Suppose that it is true for all $p_i$ with proofs of length $n-1$ or less that $A \cup \{p\} \vdash p_i$ implies that $A \vdash p \Rightarrow p_i$. If $q \notin A \cup \mathscr{A}$, (the alternative takes care of the base case of the induction), then the last step in a proof of $q$ from $A \cup \{p\}$ would be modus ponens. Therefore, there exists some $p_i$ deducible from $A \cup \{p\}$ which equals $p_j \Rightarrow q$ where $p_j$ is also deducible from $A \cup \{p\}$, both of which have proofs of length strictly less than $n-1$. 
 
 By the inductive hypothesis, we have $A \vdash p \Rightarrow p_i$ and $A \vdash p \Rightarrow p_j$. Notice that $p \Rightarrow p_i = p \Rightarrow (p_j \Rightarrow q)$. Therefore, we have $p \Rightarrow (p_j \Rightarrow q) \in Ded(A)$ and $p \Rightarrow p_j \in Ded(A)$. By the lemma we have $p\Rightarrow q \in Ded(A)$, which completes the proof of The Deduction Theorem. 
 \end{proof}
@@ -101,5 +101,16 @@ Show that  $\vdash p\Rightarrow \sim$$\sim$$p$ and construct a proof of $p \Righ
 \end{problem}
 \begin{proof}[Exercise 2.7]
 Recall that $\sim$$p = p\Rightarrow F$. The following is a proof of F from $\{p,\sim$$p\}$. \\Given, $p$\\$\sim$$p = p \Rightarrow F$\\By modus ponens, $F$.\\\\ Therefore,  $\{p,\sim$$p\}\vdash F$. By the Deduction Theorem, $\{p\}\vdash \sim$$p\Rightarrow F$. A second application of the Deduction Theorem gives $\emptyset\vdash p\Rightarrow(\sim$$p\Rightarrow F)$. By definition, we have $\vdash p\Rightarrow\sim$$\sim$$p$. 
+\end{proof}
+
+\begin{flushleft}
+\textbf{Theorem 2.13} (The Adequacy Theorem) $Let$ $A \subseteq P(X)$, $and$ $p \in P(X)$. $If$ $A \models p$ $in$ $Prop(X)$, then $A\vdash p$ $in$ $Prop(X)$. 
+\end{flushleft}
+ 
+ \begin{problem}[Exercise 2.14 (The Compactness Theorem)]
+Show that if $A \models p$, then $A_0 \models p$ for some finite subset $A_0$ of $A$. 
+\end{problem}
+\begin{proof}[Exercise 2.14]
+By the Adequacy Theorem, there $A \vdash p$ in $Prop(X)$. By Lemma $4.4$ of chapter II section IV, $p \in Ded(A)$, implies that $p \in Ded(A_0)$ for some finite subset $A_0$ of $A$. Thus $A_0\vdash p$. By the Soundness Theorem $A_0 \models p$. 
 \end{proof}
 \end{document}
