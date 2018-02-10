@@ -87,7 +87,7 @@ Therefore, $Ded(A) \subseteq D$ for all such $D$ and is thus the smallest, order
 Construct a proof in the propositional calculus of $p \Rightarrow r$ from the assumptions $A = \{p\Rightarrow q, q\Rightarrow r\}$. 
 \end{problem}
 \begin{proof}[4.10] 
-By assumption, $(q \Rightarrow r) \in Ded(A)$. Let $p_1 = (q \Rightarrow r)$. Axiom $1$ of $\mathscr{A}$ says that $p_1 \Rightarrow (p \Rightarrow p_1) \in \mathscr{A} \cup A$ and is therefore in $Ded(A)$.\\\\We have, $p_1 \in Ded(A)$ and $p_1 \Rightarrow (p \Rightarrow p_1) \in Ded(A)$. By modus ponens, $p \Rightarrow p_1 \in Ded(A)$. Applying Axiom $2$ to $(p \Rightarrow p_1) = (p \Rightarrow (q \Rightarrow r))$, We obtain $((p \rightarrow q) \Rightarrow (p \Rightarrow r))$. Noting that we began with the assumption $(p \rightarrow q)$, by modus ponens we obtain $(p \Rightarrow r)$.
+By assumption, $(q \Rightarrow r) \in Ded(A)$. Let $p_1 = (q \Rightarrow r)$. Axiom $1$ of $\mathscr{A}$ says that $p_1 \Rightarrow (p \Rightarrow p_1) \in \mathscr{A} \cup A$ and is therefore in $Ded(A)$.\\\\We have, $p_1 \in Ded(A)$ and $p_1 \Rightarrow (p \Rightarrow p_1) \in Ded(A)$. By modus ponens, $p \Rightarrow p_1 \in Ded(A)$. Applying Axiom $2$ to $(p \Rightarrow p_1) = (p \Rightarrow (q \Rightarrow r))$, We obtain $((p \Rightarrow q) \Rightarrow (p \Rightarrow r))$. Noting that we began with the assumption $(p \Rightarrow q)$, by modus ponens we obtain $(p \Rightarrow r)$.
 \end{proof}
 
 
