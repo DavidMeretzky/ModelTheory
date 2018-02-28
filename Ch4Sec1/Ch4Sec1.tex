@@ -79,6 +79,9 @@ Show that if $w_1,w_2 \in \widetilde{P}(V,\mathscr{R})$, then $$V(w_1\Rightarrow
 \end{problem}
 
 \begin{proof}[Exercise 1.2 iii)]
+Let $\overline{U} = V(w_1) \cup V(w_2)$, then $w_1 \in \widetilde{P}(\overline{U},\mathscr{R})$ and $w_2 \in \widetilde{P}(\overline{U},\mathscr{R})$. Since $\Rightarrow$ is in the type for both of these free algebras, $w_1 \Rightarrow w_2 \in \widetilde{P}(\overline{U},\mathscr{R})$. This implies that $V(w_1 \Rightarrow w_2) \subseteq U = (V(w_1) \cup V(w_2))$. This holds because we have verified that $\overline{U}$ is one of the sets which is in the intersection which $V(w_1 \Rightarrow w_2)$ is defined to be. 
+
+To show the reverse inclusion, that is that $V(w_1) \cup V(w_2) \subseteq V(w_1 \Rightarrow w_2)$, we need to show that $V(w_1) \subseteq V(w_1 \Rightarrow w_2)$ and that $V(w_2) \subseteq V(w_1 \Rightarrow w_2)$. This intuitively plausible pair of inclusions is verified if we can show without loss of generality that $w_1 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$. Clearly, $w_1 \Rightarrow w_2 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$, and since $\widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$ is generated freely, then by construction, if $w_1 \Rightarrow w_2 \in F_n$, then if $w_2 \in F_k$ with $k < n$, $w_1 \in F_{n-k}$ and therefore, $w_1 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$. The symmetry of the argument shows too that $w_2 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$, and therefore, $V(w_1) \subseteq V(w_1 \Rightarrow w_2)$ and that $V(w_2) \subseteq V(w_1 \Rightarrow w_2)$. The reverse inclusion, $V(w_1) \cup V(w_2) \subseteq V(w_1 \Rightarrow w_2)$ follows and we obtain the final equality. 
 \end{proof}
 
 
