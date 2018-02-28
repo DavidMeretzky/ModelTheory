@@ -60,7 +60,7 @@ From the text, $V$ is an infinite set who's elements are called individual varia
 Show that $V(\textbf{F}) = \emptyset$.
 \end{problem}
 
-\begin{proof}[Exercise 1.2 i)]
+\begin{proof}[Solution exercise 1.2 i)]
 Since, $V(\textbf{F}) = \cap\{U|U \subseteq V, \textbf{F} \in \widetilde{P}(U,\mathscr{R})\}$ it suffices to show that $\emptyset$ is in this collection of sets such that $\emptyset \subseteq V$, and $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$, because then $V(F)$ which is the intersection of all such sets, must then be contained in the $\emptyset$. It is clearly true that $\emptyset \subseteq V$. Note by the construction of $\widetilde{P}(\emptyset,\mathscr{R})$ that $T_0$, the nullary operations for the type mentioned in the first paragraph, must be elements of $\widetilde{P}(\emptyset,\mathscr{R})$. That is, $\widetilde{P}(\emptyset,\mathscr{R}) = \cup F_n$ where $F_0 = T_0 \cup \emptyset$. Thus since $\textbf{F} \in T_0$, $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$. It follows that $V(\textbf{F}) = \emptyset$.
 \end{proof}
 
@@ -68,7 +68,7 @@ Since, $V(\textbf{F}) = \cap\{U|U \subseteq V, \textbf{F} \in \widetilde{P}(U,\m
 Show that if $r \in \mathscr{R}$, $ar(r) = n$, and $x_1,x_2,...,x_n \in V$ then $V(r(x_1,x_2,...,x_n)) = \{x_1,x_2,....,x_n\}$.
 \end{problem}
 
-\begin{proof}[Exercise 1.2 ii)]
+\begin{proof}[Solution exercise 1.2 ii)]
 Similarly, if we can show that $\{x_1,x_2,....,x_n\}$ satisfies the properties that $\{x_1,x_2,....,x_n\} \subseteq V$ and $r(x_1,x_2,...,x_n) \in \widetilde{P}(\{x_1,x_2,....,x_n\},\mathscr{R})$, then we will have that $V(r(x_1,x_2,...,x_n)) \subseteq \{x_1,x_2,....,x_n\}$. By definition, $\widetilde{P}(\{x_1,x_2,....,x_n\},\mathscr{R})$ has a generating set of things of the form $r(x_1,x_2,...,x_n)$, and therefore must contain this element at it's nullary level. We initially supposed also that $x_1,x_2,...,x_n \in V$ so $\{x_1,x_2,....,x_n\} \subseteq V$ and both conditions are verified. Therefore it holds that $V(r(x_1,x_2,...,x_n)) \subseteq \{x_1,x_2,....,x_n\}$. 
 
 To show the reverse inclusion pick any $U$ such that $U \subseteq V$ and $r(x_1,x_2,...,x_n) \in \widetilde{P}(U,\mathscr{R})$. Looking at the form of $r(x_1,x_2,...,x_n)$, we see that it must be a generator, and therefore, $U$ must contain $\{x_1,x_2,....,x_n\}$. Since $U$ was chosen arbitrarily, the reverse inclusion holds and therefore $V(r(x_1,x_2,...,x_n)) = \{x_1,x_2,....,x_n\}$.
@@ -78,11 +78,29 @@ To show the reverse inclusion pick any $U$ such that $U \subseteq V$ and $r(x_1,
 Show that if $w_1,w_2 \in \widetilde{P}(V,\mathscr{R})$, then $$V(w_1\Rightarrow w_2) = V(w_1) \cup V(w_2).$$
 \end{problem}
 
-\begin{proof}[Exercise 1.2 iii)]
+\begin{proof}[Solution exercise 1.2 iii)]
 Let $\overline{U} = V(w_1) \cup V(w_2)$, then $w_1 \in \widetilde{P}(\overline{U},\mathscr{R})$ and $w_2 \in \widetilde{P}(\overline{U},\mathscr{R})$. Since $\Rightarrow$ is in the type for both of these free algebras, $w_1 \Rightarrow w_2 \in \widetilde{P}(\overline{U},\mathscr{R})$. This implies that $V(w_1 \Rightarrow w_2) \subseteq U = (V(w_1) \cup V(w_2))$. This holds because we have verified that $\overline{U}$ is one of the sets which is in the intersection which $V(w_1 \Rightarrow w_2)$ is defined to be. 
 
 To show the reverse inclusion, that is that $V(w_1) \cup V(w_2) \subseteq V(w_1 \Rightarrow w_2)$, we need to show that $V(w_1) \subseteq V(w_1 \Rightarrow w_2)$ and that $V(w_2) \subseteq V(w_1 \Rightarrow w_2)$. This intuitively plausible pair of inclusions is verified if we can show without loss of generality that $w_1 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$. Clearly, $w_1 \Rightarrow w_2 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$, and since $\widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$ is generated freely, then by construction, if $w_1 \Rightarrow w_2 \in F_n$, then if $w_2 \in F_k$ with $k < n$, $w_1 \in F_{n-k}$ and therefore, $w_1 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$. The symmetry of the argument shows too that $w_2 \in \widetilde{p}(V(w_1 \Rightarrow w_2), \mathscr{R})$, and therefore, $V(w_1) \subseteq V(w_1 \Rightarrow w_2)$ and that $V(w_2) \subseteq V(w_1 \Rightarrow w_2)$. The reverse inclusion, $V(w_1) \cup V(w_2) \subseteq V(w_1 \Rightarrow w_2)$ follows and we obtain the final equality. 
 \end{proof}
 
+\begin{problem}[Exercise 1.2 iv)] 
+Show that if $x \in V$, and $w \in \widetilde{P}(V,\mathscr{R})$, then $V((\forall x)(w)) = {x} \cup V(w)$
+\end{problem}
 
+\begin{proof}[Solution exercise 1.2 iv)]
+To show $V((\forall x)(w)) \subseteq {x} \cup V(w)$, we need to show that $(\forall x)(w) \in \widetilde{P}({x} \cup V(w),\mathscr{R})$. Since $x \in {x} \cup V(w)$, the type of $\widetilde{P}({x} \cup V(w),\mathscr{R})$ contains the neccesary quantifier $(\forall x)$. Clearly, $w \in \widetilde{P}({x} \cup V(w),\mathscr{R})$. Since $\widetilde{P}({x} \cup V(w),\mathscr{R})$ is freely generated and we have the necesary quantifier, then since for some $n$ $w \in F_n$, we then must have that $(\forall x)(w) \in F_{n+1}$. Therefore $(\forall x)(w) \in \widetilde{P}({x} \cup V(w),\mathscr{R})$, and the inclusion $V((\forall x)(w)) \subseteq {x} \cup V(w)$ holds. The nice part about the free construction is that we need not actually define what the value of $(\forall x)$ is at $w$. 
+
+To show the reverse inclusion, that is ${x} \cup V(w) \subseteq V((\forall x)(w))$, it is a consequence of part $iii$ above, that it suffices to show that $x \Rightarrow w \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$. Nonsensical as it sounds, but nonetheless by definition, the existence of the quantifier $(\forall x)$, only occurs when the underlying set contains $x$. Thus $x \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$. Also $w \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$ because $(\forall x)(w) \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$ at $F_{n+1}$, so $w \in F_{n}$ and therefore, in $w \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$. Since $\Rightarrow$ is present in the type of $\widetilde{P}(V((\forall x)(w)), \mathscr{R})$ we have that $x \Rightarrow w \in \widetilde{P}(V((\forall x)(w)), \mathscr{R})$ and therefore that ${x} \cup V(w) \subseteq V((\forall x)(w))$. The result follows. 
+\end{proof}
+
+\begin{problem}[Exercise 1.2 v)] 
+Show further that (i)-(iv) may be taken as the definition of the function $V(w)$.
+\end{problem}
+
+\begin{proof}[Solution exercise 1.2 v)] 
+Define a function $V:\widetilde{P}(V, \mathscr{R}) \rightarrow V$ by properties (i)-(iv). We verify that it is the same as defining the function $V$ using $\textbf{Definition 1.1}$ by examining what it does to each level of the recursive construction of $\widetilde{P}(V, \mathscr{R})$
+
+The first level, $F_0 = T_0 \cup \{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$, that is, the union of the nullary operation $\textbf{F}$ and the generators. The proof of part (i) shows that the functions agree on $\textbf{F}$. The proof of part (ii) shows that the functions agree on the generators. Parts (iii) and (iv) show, that if the functions agree on all elements at level $F_n$, then the use of additional operators respectively, $\Rightarrow$ and $(\forall x)$, from $T_{k=1,2}$, which then propel the elements of type $F_n$ into type $F_{n+1}$, still agree on the next level. This completes an inductive argument that these ways of defining $V$ are the same on all of $\widetilde{P}(V, \mathscr{R})$.
+\end{proof}
 \end{document}
