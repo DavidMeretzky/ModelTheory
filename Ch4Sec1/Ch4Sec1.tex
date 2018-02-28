@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 4 Predicate Calculus \\
+Section 1 Algebra of Predicates \\
+Exercises 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+February 28th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+
+
+
+The following is the construction of the Algebra of Predicates.\\
+
+From the text, $V$ is an infinite set who's elements are called individual variables. There is also a set of relation or predicate symbols $\mathscr{R}$, together with an arity function $ar:\mathscr{R}\rightarrow \mathbb{N}$.  The set of generators used to construct the propositional algebra $P$ is $$\{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$$ Let $\widetilde{P}(V,\mathscr{R})$ be the free algebra on the set above of type $\{\textbf{F}, \Rightarrow,(\forall x)|x \in V\}$, where the arities are as usual, that is, $\textbf{F}$ is nullary, and $\Rightarrow$ is binary.  For each $x \in V$ we have a unary operator $(\forall x)$. A similar example can be found in the signature of a vector space over a feild $k$. Here, for each element of $k$, there is a unary operator which is scalar multiplication by that element. 
+
+\begin{flushleft}
+\textbf{Definition 1.1} Let $w \in \widetilde{P}(V,\mathscr{R})$ the set of $variables$ $involved$ $in$ $w$, denoted by $V(w)$, is defined by $$V(w) = \cap\{U|U \subseteq V, w\in \widetilde{P}(U,\mathscr{R})\}.$$
+\end{flushleft}
+
+\begin{problem}[Exercise 1.2 i)] 
+Show that $V(\textbf{F}) = \emptyset$.
+\end{problem}
+
+\begin{proof}[Exercise 1.2 i)]
+Since, $V(\textbf{F}) = \cap\{U|U \subseteq V, \textbf{F} \in \widetilde{P}(U,\mathscr{R})\}$ it suffices to show that $\emptyset$ is in this collection of sets such that $\emptyset \subseteq V$, and $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$, because then $V(F)$ which is the intersection of all such sets, must then be contained in the $\emptyset$. It is clearly true that $\emptyset \subseteq V$. Note by the construction of $\widetilde{P}(\emptyset,\mathscr{R})$ that $T_0$, the nullary operations for the type mentioned in the first paragraph, must be elements of $\widetilde{P}(\emptyset,\mathscr{R})$. That is, $\widetilde{P}(\emptyset,\mathscr{R}) = \cup F_n$ where $F_0 = T_0 \cup \emptyset$. Thus since $\textbf{F} \in T_0$, $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$. It follows that $V(\textbf{F}) = \emptyset$.
+\end{proof}
+
+\begin{problem}[Exercise 1.2 ii)] 
+Show that if $r \in \mathscr{R}$, $ar(r) = n$, and $x_1,x_2,...,x_n \in V$ then $V(r(x_1,x_2,...,x_n)) = \{x_1,x_2,....,x_n\}$.
+\end{problem}
+
+\begin{proof}[Exercise 1.2 ii)]
+Similarly, if we can show that $\{x_1,x_2,....,x_n\}$ satisfies the properties that $\{x_1,x_2,....,x_n\} \subseteq V$ and $r(x_1,x_2,...,x_n) \in \widetilde{P}(\{x_1,x_2,....,x_n\},\mathscr{R})$, then we will have that $V(r(x_1,x_2,...,x_n)) \subseteq \{x_1,x_2,....,x_n\}$. By definition, $\widetilde{P}(\{x_1,x_2,....,x_n\},\mathscr{R})$ has a generating set of things of the form $r(x_1,x_2,...,x_n)$, and therefore must contain this element at it's nullary level. We initially supposed also that $x_1,x_2,...,x_n \in V$ so $\{x_1,x_2,....,x_n\} \subseteq V$ and both conditions are verified. Therefore it holds that $V(r(x_1,x_2,...,x_n)) \subseteq \{x_1,x_2,....,x_n\}$. 
+
+To show the reverse inclusion pick any $U$ such that $U \subseteq V$ and $r(x_1,x_2,...,x_n) \in \widetilde{P}(U,\mathscr{R})$. Looking at the form of $r(x_1,x_2,...,x_n)$, we see that it must be a generator, and therefore, $U$ must contain $\{x_1,x_2,....,x_n\}$. Since $U$ was chosen arbitrarily, the reverse inclusion holds and therefore $V(r(x_1,x_2,...,x_n)) = \{x_1,x_2,....,x_n\}$.
+\end{proof}
+
+\begin{problem}[Exercise 1.2 iii)] 
+Show that if $w_1,w_2 \in \widetilde{P}(V,\mathscr{R})$, then $$V(w_1\Rightarrow w_2) = V(w_1) \cup V(w_2).$$
+\end{problem}
+
+\begin{proof}[Exercise 1.2 iii)]
+\end{proof}
+
+
+\end{document}
