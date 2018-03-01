@@ -48,9 +48,9 @@ February 28th, 2018
 
 
 
-The following is the construction of the Algebra of Predicates.\\
+The following is the start of the construction of the Algebra of Predicates.\\
 
-From the text, $V$ is an infinite set who's elements are called individual variables. There is also a set of relation or predicate symbols $\mathscr{R}$, together with an arity function $ar:\mathscr{R}\rightarrow \mathbb{N}$.  The set of generators used to construct the propositional algebra $P$ is $$\{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$$ Let $\widetilde{P}(V,\mathscr{R})$ be the free algebra on the set above of type $\{\textbf{F}, \Rightarrow,(\forall x)|x \in V\}$, where the arities are as usual, that is, $\textbf{F}$ is nullary, and $\Rightarrow$ is binary.  For each $x \in V$ we have a unary operator $(\forall x)$. A similar example can be found in the signature of a vector space over a feild $k$. Here, for each element of $k$, there is a unary operator which is scalar multiplication by that element. 
+From the text, $V$ is an infinite set who's elements are called individual variables. There is also a set of relation or predicate symbols $\mathscr{R}$, together with an arity function $ar:\mathscr{R}\rightarrow \mathbb{N}$.  The set of generators used to construct the propositional algebra $P$ is $$\{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$$ Let $\widetilde{P}(V,\mathscr{R})$ be the free algebra on the set above of type $\{\textbf{F}, \Rightarrow,(\forall x)|x \in V\}$, where the arities are as usual, that is, $\textbf{F}$ is nullary, and $\Rightarrow$ is binary.  For each $x \in V$ we have a unary operator $(\forall x)$. A similar example can be found in the signature of a vector space over a field $k$. Here, for each element of $k$, there is a unary operator which is scalar multiplication by that element. 
 
 \begin{flushleft}
 \textbf{Definition 1.1} Let $w \in \widetilde{P}(V,\mathscr{R})$ the set of $variables$ $involved$ $in$ $w$, denoted by $V(w)$, is defined by $$V(w) = \cap\{U|U \subseteq V, w\in \widetilde{P}(U,\mathscr{R})\}.$$
@@ -61,7 +61,7 @@ Show that $V(\textbf{F}) = \emptyset$.
 \end{problem}
 
 \begin{proof}[Solution exercise 1.2 i)]
-Since, $V(\textbf{F}) = \cap\{U|U \subseteq V, \textbf{F} \in \widetilde{P}(U,\mathscr{R})\}$ it suffices to show that $\emptyset$ is in this collection of sets such that $\emptyset \subseteq V$, and $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$, because then $V(F)$ which is the intersection of all such sets, must then be contained in the $\emptyset$. It is clearly true that $\emptyset \subseteq V$. Note by the construction of $\widetilde{P}(\emptyset,\mathscr{R})$ that $T_0$, the nullary operations for the type mentioned in the first paragraph, must be elements of $\widetilde{P}(\emptyset,\mathscr{R})$. That is, $\widetilde{P}(\emptyset,\mathscr{R}) = \cup F_n$ where $F_0 = T_0 \cup \emptyset$. Thus since $\textbf{F} \in T_0$, $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$. It follows that $V(\textbf{F}) = \emptyset$.
+Since, $V(\textbf{F}) = \cap\{U|U \subseteq V, \textbf{F} \in \widetilde{P}(U,\mathscr{R})\}$ it suffices to show that $\emptyset$ is in this collection of sets such that $\emptyset \subseteq V$, and $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$, because then $V(F)$ which is the intersection of all such sets, must then be contained in $\emptyset$. It is clearly true that $\emptyset \subseteq V$. Note by the construction of $\widetilde{P}(\emptyset,\mathscr{R})$ that $T_0$, the nullary operations for the type mentioned in the first paragraph, must be elements of $\widetilde{P}(\emptyset,\mathscr{R})$. That is, $\widetilde{P}(\emptyset,\mathscr{R}) = \cup F_n$ where $F_0 = T_0 \cup \emptyset$. Thus since $\textbf{F} \in T_0$, $\textbf{F} \in \widetilde{P}(\emptyset,\mathscr{R})$. It follows that $V(\textbf{F}) = \emptyset$.
 \end{proof}
 
 \begin{problem}[Exercise 1.2 ii)] 
@@ -103,4 +103,33 @@ Define a function $V:\widetilde{P}(V, \mathscr{R}) \rightarrow V$ by properties 
 
 The first level, $F_0 = T_0 \cup \{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$, that is, the union of the nullary operation $\textbf{F}$ and the generators. The proof of part (i) shows that the functions agree on $\textbf{F}$. The proof of part (ii) shows that the functions agree on the generators. Parts (iii) and (iv) show, that if the functions agree on all elements at level $F_n$, then the use of additional operators respectively, $\Rightarrow$ and $(\forall x)$, from $T_{k=1,2}$, which then propel the elements of type $F_n$ into type $F_{n+1}$, still agree on the next level. This completes an inductive argument that these ways of defining $V$ are the same on all of $\widetilde{P}(V, \mathscr{R})$.
 \end{proof}
+
+\begin{flushleft}
+\textbf{Definition 1.3} Let $w \in \widetilde{P}(V,\mathscr{R})$ the $depth$ $of$ $quantification$ of $w$, denoted by $d(w)$, is defined by 
+
+\begin{enumerate}
+\item $d(\textbf{F}) = 0$, $d(r(x_1,x_2,...,x_n)) = 0$ for every free generator of $\widetilde{P}(V,\mathscr{R})$. Note, since $F_0$ in the construction of $\widetilde{P}(V,\mathscr{R})$ is the union of $T_0 = \{\textbf{F}\}$ and the generators which are of the form $r(x_1,x_2,...,x_n)$ for $r \in \mathscr{R}$ and $x_1,x_2,...,x_n \in V$, then we can say for all $f \in F_0$, $d(f) = 0$. 
+
+\item $d(w_1 \Rightarrow w_2) = max(d(w_1),d(w_2))$
+
+\item $d((\forall x)(w)) = 1 + d(w)$ for $x \in V$ 
+\end{enumerate}
+\end{flushleft}
+Our desired congruence relation on $\widetilde{P}(V,\mathscr{R})$ may now be defined. 
+
+\begin{flushleft}
+\textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
+
+\begin{enumerate}
+\item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. By item 2 of the previous definition the use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
+\item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
+\item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
+\begin{enumerate}
+\item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
+\item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \sim b$ and $y \notin V(c)$ 
+\end{enumerate}
+\end{enumerate}
+
+The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1)$. 
+\end{flushleft}
 \end{document}
