@@ -126,10 +126,10 @@ Our desired congruence relation on $\widetilde{P}(V,\mathscr{R})$ may now be def
 \item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
 \begin{enumerate}
 \item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
-\item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \sim b$ and $y \notin V(c)$ 
+\item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ and $y \notin V(c)$ 
 \end{enumerate}
 \end{enumerate}
 
-The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1)$. 
+The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $$(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1) = (\forall y_1)(r_1(y_1,x_2)\Rightarrow r_2(y_1,x_2,x_3)).$$ For this reason to make this the case all that we need is to be able to say that $y_1 \notin V(c)$. The reason that the opposite condition $x_1 \notin V(c(y_1))$ holds is that by definition $V(c(y_1))$ has every instance of $x_1$ already replaced. 
 \end{flushleft}
 \end{document}
