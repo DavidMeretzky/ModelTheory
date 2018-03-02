@@ -50,7 +50,9 @@ February 28th, 2018
 
 The following is the start of the construction of the Algebra of Predicates.\\
 
-From the text, $V$ is an infinite set who's elements are called individual variables. There is also a set of relation or predicate symbols $\mathscr{R}$, together with an arity function $ar:\mathscr{R}\rightarrow \mathbb{N}$.  The set of generators used to construct the propositional algebra $P$ is $$\{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$$ Let $\widetilde{P}(V,\mathscr{R})$ be the free algebra on the set above of type $\{\textbf{F}, \Rightarrow,(\forall x)|x \in V\}$, where the arities are as usual, that is, $\textbf{F}$ is nullary, and $\Rightarrow$ is binary.  For each $x \in V$ we have a unary operator $(\forall x)$. A similar example can be found in the signature of a vector space over a field $k$. Here, for each element of $k$, there is a unary operator which is scalar multiplication by that element. 
+From the text, $V$ is an infinite set who's elements are called individual variables. There is also a set of relation or predicate symbols $\mathscr{R}$, together with an arity function $ar:\mathscr{R}\rightarrow \mathbb{N}$.  The set of generators used to construct the propositional algebra $P$ is $$\{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, \text{ and }ar(r) = n\}$$ 
+
+Let $\widetilde{P}(V,\mathscr{R})$ be the free algebra on the set above of type $\{\textbf{F}, \Rightarrow,(\forall x)|x \in V\}$, where the arities are as usual, that is, $\textbf{F}$ is nullary, and $\Rightarrow$ is binary.  For each $x \in V$ we have a unary operator $(\forall x)$. A similar example can be found in the signature of a vector space over a field $k$. Here, for each element of $k$, there is a unary operator which is scalar multiplication by that element. 
 
 \begin{flushleft}
 \textbf{Definition 1.1} Let $w \in \widetilde{P}(V,\mathscr{R})$ the set of $variables$ $involved$ $in$ $w$, denoted by $V(w)$, is defined by $$V(w) = \cap\{U|U \subseteq V, w\in \widetilde{P}(U,\mathscr{R})\}.$$
@@ -132,4 +134,25 @@ Our desired congruence relation on $\widetilde{P}(V,\mathscr{R})$ may now be def
 
 The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $$(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1) = (\forall y_1)(r_1(y_1,x_2)\Rightarrow r_2(y_1,x_2,x_3)).$$ For this reason to make this the case all that we need is to be able to say that $y_1 \notin V(c)$. The reason that the opposite condition $x_1 \notin V(c(y_1))$ holds is that by definition $V(c(y_1))$ has every instance of $x_1$ already replaced. 
 \end{flushleft}
+
+\begin{problem}[Exercise 1.5 i)]
+Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
+\end{problem}
+
+\begin{proof}[Solution exercise 1.5 i)]
+Implicit in the statement of the question is that $w_1 \approx w_2$ for the reason enumerated in $\textbf{Definition 1.4}$ $3 (b)$. That is, $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$ and $\exists c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). 
+
+Let us show now that in the case where $d(w_1) = 1$ the result holds. If $d(w_1) = 1$, then $d(a) = 0$. This implies that congruence with a must be strict equality. If $c(x) \approx a$, then indeed $c = c(x) = a$. This implies that $d(c) = 0$ we now have that $c(y) \approx b$, which implies that $c(y) = b$ and then $d(w_2) = 1$. (I realize that this is somewhat orthogonal to the proof of the base case but thinking about this is helping me get towards the proof.)
+
+In fact we can use a double application of part 4 of $\textbf{Exercise 1.2}$ to obtain that $z \notin V(w_1) \cup V(w_2)$ is equivalent to the statement $$z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$$ 
+
+Clearly then $z \notin V(a)$ and since $c = c(x) = a$, and because $V$ is a function, $z \notin V(c)$.
+
+Now lets prove the inductive step. Assume true for all $\textit{depths of quantification}$ $n$ or below that the result holds. Now for $w_1 \approx w_2$, we are given $z \notin V(w_1) \cup V(w_2)$, where $d(w_1) = n+1$. Here we again omit a minor point, if the last operand in the words $w_1$ or $w_2$ is $\Rightarrow$, part 2 of $\textbf{Definition 1.4}$ may be used to peel back the $\Rightarrow$. So we may assume that (as implicit in the statment of the problem) the condition of $\textbf{Definition 1.4}$ $3 (b)$ holds. That is to say that $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$ and $\exists c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). We wish to show that $z \notin c$. Note now that $d(a) = n$ and the result holds for $a$ and $b$ because if $z \notin V(w_1) \cup V(w_2)$, then $z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$ and therefore, $z \notin \{x\}$ or $V(a)$ or $\{y\}$ or $V(b)$. We may then apply $\textbf{Definition 1.4}$ $3 (b)$ to $a$ and $b$ playing the roles of $w_1$ and $w_2$ with the additional benifit that the newly existing $c'$, does not contain $z$. 
+
+I will spell this out. Recall, $w_1 = (\forall x)a$ and $d(a) = n$. Similarly, $w_2 = (\forall y)b$. It follows from the above comments and (perhaps an application of part 2 of $\textbf{Definition 1.4}$ that $a = (\forall x)\alpha$ and $b = (\forall y)\beta$, and by part 3 (b) of $\textbf{Definition 1.4}$, there exists a $c' \approx \alpha$ and $c'(y)\approx \beta$ such that $y \notin v(c')$ and by hypothesis that $z \notin v(c')$. 
+
+We have that by part 3 (a) of $\textbf{Definition 1.4}$ that since $c' \approx \alpha$, $(\forall x)c' \approx (\forall x)\alpha = a$ and since $c'(y)\approx \beta$,  $(\forall y)c'(y)\approx (\forall y)\beta = b$. If we define the $c$ from before to be $(\forall x)c'$, we are finished. Using part 4 of $\textbf{Exercise 1.2}$ and the fact that $z \notin \{x\}$, $z \notin (\forall y)c'(y)$ as desired. We have verified also that $(\forall x)c'(x)\approx a$ and $(\forall y)c'(y)\approx b$, and $y \notin V((\forall x)c'(x)) = \{x\} \cup V(c')$. 
+
+\end{proof}
 \end{document}
