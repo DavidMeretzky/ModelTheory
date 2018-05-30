@@ -119,40 +119,62 @@ The first level, $F_0 = T_0 \cup \{(r,x_1,...x_n)|r \in \mathscr{R}, x_i \in V, 
 \end{flushleft}
 Our desired congruence relation on $\widetilde{P}(V,\mathscr{R})$ may now be defined. 
 
-\begin{flushleft}
-\textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
+% \begin{flushleft}
+% \textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
+% 
+% \begin{enumerate}
+% \item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. By item 2 of the previous definition the use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
+% \item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
+% \item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
+% \begin{enumerate}
+% \item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
+% \item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ and $y \notin V(c)$ 
+% \end{enumerate}
+% \end{enumerate}
+% 
+% The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $$(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1) = (\forall y_1)(r_1(y_1,x_2)\Rightarrow r_2(y_1,x_2,x_3)).$$ For this reason to make this the case all that we need is to be able to say that $y_1 \notin V(c)$. The reason that the opposite condition $x_1 \notin V(c(y_1))$ holds is that by definition $V(c(y_1))$ has every instance of $x_1$ already replaced. 
+% \end{flushleft}
+% 
+% \begin{problem}[Exercise 1.5 i)]
+% Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
+% \end{problem}
+% 
+% \begin{proof}[Solution exercise 1.5 i)]
+% Implicit in the statement of the question is that $w_1 \approx w_2$ for the reason enumerated in $\textbf{Definition 1.4}$ $3 (b)$. That is, $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$   there exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). 
+% 
+% Let us show now that in the case where $d(w_1) = 1$ the result holds. If $d(w_1) = 1$, then $d(a) = 0$. This implies that congruence with a must be strict equality. If $c(x) \approx a$, then indeed $c = c(x) = a$. This implies that $d(c) = 0$ we now have that $c(y) \approx b$, which implies that $c(y) = b$ and then $d(w_2) = 1$. (I realize that this is somewhat orthogonal to the proof of the base case but thinking about this is helping me get towards the proof.)
+% 
+% In fact we can use a double application of part 4 of $\textbf{Exercise 1.2}$ to obtain that $z \notin V(w_1) \cup V(w_2)$ is equivalent to the statement $$z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$$ 
+% 
+% Clearly then $z \notin V(a)$ and since $c = c(x) = a$, and because $V$ is a function, $z \notin V(c)$.
+% 
+% Let us pause for a moment before we show the inductive step to take stock of exactly how we proved the base case.\\
+% 
+% Exactly what we needed to use to show that $z \notin V(c(x))$ was only that $z \notin V(a)$ and that $z \neq y$. The requirement $z \neq y$, comes from the fact that $z \notin V(b)$. Then since at depth $0$ we have $a \approx c$ implies $a = c$, $z \notin c(x)$. 
+% 
+% Suppose that for all words of depth $n$ or less that the result holds.  That is  if $z \notin V(a)$ and 
+% 
+% 
+% Assume true for all $\textit{depths of quantification}$ $n$ or below that the result holds. Now for $w_1 \approx w_2$, we are given $z \notin V(w_1) \cup V(w_2)$, where $d(w_1) = n+1$. Here we again omit a minor point, if the last operand in the words $w_1$ or $w_2$ is $\Rightarrow$, part 2 of $\textbf{Definition 1.4}$ may be used to peel back the $\Rightarrow$. So we may assume that (as implicit in the statment of the problem) the condition of $\textbf{Definition 1.4}$ $3 (b)$ holds. That is to say that $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$ and $\exists c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). We wish to show that $z \notin c$. Note now that $d(a) = n$ and the result holds for $a$ and $b$ because if $z \notin V(w_1) \cup V(w_2)$, then $z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$ and therefore, $z \notin \{x\}$ or $V(a)$ or $\{y\}$ or $V(b)$. We may then apply $\textbf{Definition 1.4}$ $3 (b)$ to $a$ and $b$ playing the roles of $w_1$ and $w_2$ with the additional benifit that the newly existing $c'$, does not contain $z$. 
+% 
+% I will spell this out. Recall, $w_1 = (\forall x)a$ and $d(a) = n$. Similarly, $w_2 = (\forall y)b$. It follows from the above comments and (perhaps an application of part 2 of $\textbf{Definition 1.4}$ that $a = (\forall x)\alpha$ and $b = (\forall y)\beta$, and by part 3 (b) of $\textbf{Definition 1.4}$, there exists a $c' \approx \alpha$ and $c'(y)\approx \beta$ such that $y \notin V(c')$ and by hypothesis that $z \notin V(c')$. 
+% 
+% We have that by part 3 (a) of $\textbf{Definition 1.4}$ that since $c' \approx \alpha$, $(\forall x)c' \approx (\forall x)\alpha = a$ and since $c'(y)\approx \beta$,  $(\forall y)c'(y)\approx (\forall y)\beta = b$. If we define the $c$ from before to be $(\forall x)c'$, we are finished. Using part 4 of $\textbf{Exercise 1.2}$ and the fact that $z \notin \{x\}$, $z \notin V((\forall y)c'(y))$ as desired. We have verified also that $(\forall x)c'(x)\approx a$ and $(\forall y)c'(y)\approx b$, and $y \notin V((\forall x)c'(x)) = \{x\} \cup V(c')$. 
+% 
+% \end{proof}
+% 
+% \begin{problem}[Exercise 1.5 ii)]
+% If $u(x) \approx v(x)$ and $y \notin V(u(x)) \cup V(v(x))$, show by induction over $d(u(x))$ that $u(y) \approx v(y)$
+% \end{problem}
+% 
+% \begin{proof}[Solution exercise 1.5 ii)]
+% Here is the base case without delay. Let $d(u(x)) = 0$. Then if $u(x) \approx v(x)$, in fact $u(x) = v(x)$, and therefore $u(y) = v(y)$. We conclude by definition that $u(y) \approx v(y)$. 
+% 
+% Suppose that the result holds for all $\textit{depths of quantification}$ of degree $n$ or less. 
+% 
+% By the previous problem, since $u(x) \approx v(x)$ and $y \notin V(u(x)) \cup V(v(x))$, there exists a $c = c(x)$ such that $y \notin V(c(x))$ and such that $(\forall x)c(x) \approx u(x)$ and $(\forall x)c(x) \approx v(x)$. Since $y \notin V(c)$, then $(\forall x)c(x) \approx (\forall y)c(y)$
+% \end{proof}
 
-\begin{enumerate}
-\item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. By item 2 of the previous definition the use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
-\item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
-\item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
-\begin{enumerate}
-\item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
-\item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ and $y \notin V(c)$ 
-\end{enumerate}
-\end{enumerate}
 
-The following is my interpretation of the paragraph directly after this definition in the text. The way that $c$ is defined is as a word in the generators of the form $r(x_1,x_2,...,x_n)$ as discussed. Then $c$ can be though of, (just like any word) as a function of the variables that are contained in its generators. So for example, if $c = r_1(x_1,x_2)\Rightarrow r_2(x_1,x_2,x_3)$ then we can say that $c = c(x_1,x_2,x_3)$. Ignoring the dependence on $x_2$ and $x_3$ we could further say $c = c(x_1)$. We would like it to be true that $$(\forall x_1)c(x_1) \approx (\forall y_1)c(y_1) = (\forall y_1)(r_1(y_1,x_2)\Rightarrow r_2(y_1,x_2,x_3)).$$ For this reason to make this the case all that we need is to be able to say that $y_1 \notin V(c)$. The reason that the opposite condition $x_1 \notin V(c(y_1))$ holds is that by definition $V(c(y_1))$ has every instance of $x_1$ already replaced. 
-\end{flushleft}
 
-\begin{problem}[Exercise 1.5 i)]
-Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
-\end{problem}
-
-\begin{proof}[Solution exercise 1.5 i)]
-Implicit in the statement of the question is that $w_1 \approx w_2$ for the reason enumerated in $\textbf{Definition 1.4}$ $3 (b)$. That is, $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$ and $\exists c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). 
-
-Let us show now that in the case where $d(w_1) = 1$ the result holds. If $d(w_1) = 1$, then $d(a) = 0$. This implies that congruence with a must be strict equality. If $c(x) \approx a$, then indeed $c = c(x) = a$. This implies that $d(c) = 0$ we now have that $c(y) \approx b$, which implies that $c(y) = b$ and then $d(w_2) = 1$. (I realize that this is somewhat orthogonal to the proof of the base case but thinking about this is helping me get towards the proof.)
-
-In fact we can use a double application of part 4 of $\textbf{Exercise 1.2}$ to obtain that $z \notin V(w_1) \cup V(w_2)$ is equivalent to the statement $$z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$$ 
-
-Clearly then $z \notin V(a)$ and since $c = c(x) = a$, and because $V$ is a function, $z \notin V(c)$.
-
-Now lets prove the inductive step. Assume true for all $\textit{depths of quantification}$ $n$ or below that the result holds. Now for $w_1 \approx w_2$, we are given $z \notin V(w_1) \cup V(w_2)$, where $d(w_1) = n+1$. Here we again omit a minor point, if the last operand in the words $w_1$ or $w_2$ is $\Rightarrow$, part 2 of $\textbf{Definition 1.4}$ may be used to peel back the $\Rightarrow$. So we may assume that (as implicit in the statment of the problem) the condition of $\textbf{Definition 1.4}$ $3 (b)$ holds. That is to say that $w_1 = (\forall x)a$ and $w_2 = (\forall y)b$ and $\exists c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ (satisfying the condition $y \notin V(c)$). We wish to show that $z \notin c$. Note now that $d(a) = n$ and the result holds for $a$ and $b$ because if $z \notin V(w_1) \cup V(w_2)$, then $z \notin \{x\}\cup V(a) \cup \{y\}\cup V(b)$ and therefore, $z \notin \{x\}$ or $V(a)$ or $\{y\}$ or $V(b)$. We may then apply $\textbf{Definition 1.4}$ $3 (b)$ to $a$ and $b$ playing the roles of $w_1$ and $w_2$ with the additional benifit that the newly existing $c'$, does not contain $z$. 
-
-I will spell this out. Recall, $w_1 = (\forall x)a$ and $d(a) = n$. Similarly, $w_2 = (\forall y)b$. It follows from the above comments and (perhaps an application of part 2 of $\textbf{Definition 1.4}$ that $a = (\forall x)\alpha$ and $b = (\forall y)\beta$, and by part 3 (b) of $\textbf{Definition 1.4}$, there exists a $c' \approx \alpha$ and $c'(y)\approx \beta$ such that $y \notin v(c')$ and by hypothesis that $z \notin v(c')$. 
-
-We have that by part 3 (a) of $\textbf{Definition 1.4}$ that since $c' \approx \alpha$, $(\forall x)c' \approx (\forall x)\alpha = a$ and since $c'(y)\approx \beta$,  $(\forall y)c'(y)\approx (\forall y)\beta = b$. If we define the $c$ from before to be $(\forall x)c'$, we are finished. Using part 4 of $\textbf{Exercise 1.2}$ and the fact that $z \notin \{x\}$, $z \notin (\forall y)c'(y)$ as desired. We have verified also that $(\forall x)c'(x)\approx a$ and $(\forall y)c'(y)\approx b$, and $y \notin V((\forall x)c'(x)) = \{x\} \cup V(c')$. 
-
-\end{proof}
 \end{document}
