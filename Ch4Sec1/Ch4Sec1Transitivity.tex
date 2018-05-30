@@ -56,7 +56,8 @@ May 30th, 2018
 \textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
 
 \begin{enumerate}
-\item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. The use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
+\item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. 
+%Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. The use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
 \item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
 \item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
 \begin{enumerate}
@@ -81,7 +82,7 @@ By the induction hypothesis, $e(x_1)$ can be chosen so that it does not contain 
 Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is quantified over when it appears in $c(x)$ and $c(y)$. That is, $c(x) = \forall x_2c(x_2,x)$ so let $c'(x) = \forall x\overline{c}(x_3,x)$. The important thing is that $c'$ still works for $w_1 \approx w_2$. By construction, it remains true that $a \approx c'(x)$ and $b \approx c'(y)$. See the figure below
 
 %%% FIG 0 %%%%%
-\begin{center}
+\begin{flushleft}
 \begin{tikzpicture}[commutative diagrams/every diagram]
 %\draw [help lines] (0,0) grid (12,4.5);
 \node (P0) at (2,4.5) {$w_1$};
@@ -163,7 +164,7 @@ Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is
 (P13) edge [-, dashed] (P19);
 
 \end{tikzpicture}
-\end{center}
+\end{flushleft}
 
 Therefore, $z \notin V(e(x_3))$, moreover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. Since each expression has finite depth of quantification this process will terminate eventually when $e_n(x_n) \approx \overline{c}^{(n)}(x_n)$ is strict equality and therefore, if $z \notin V(e(x_3))$ then $z \notin V(\overline{c}^{(n)}(x_n))$.
 \end{proof}
