@@ -42,7 +42,7 @@ Proof of Transitivity
 
 
 \date{%date assignment is due goes here
-February 28th, 2018
+May 30th, 2018
 } 
 
 
@@ -60,7 +60,7 @@ February 28th, 2018
 \item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
 \item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
 \begin{enumerate}
-\item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
+\item $x = y$ and $a \approx b$   
 \item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ and $y \notin V(c)$ 
 \end{enumerate}
 \end{enumerate}
@@ -110,7 +110,7 @@ Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is
 \node (P16) at (3,0) {$e(x_3,x)$};
 
 \node (P17) at (12,1) {$e(y_1,y)$};
-\node (P18) at (10.5,.5) {$e(y_2,y)$};
+\node (P18) at (10.5,.5) {$e(x_2,y)$};
 \node (P19) at (9,0) {$e(x_3,y)$};
 
 \path[commutative diagrams/.cd, every arrow, every label]
@@ -165,7 +165,7 @@ Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is
 \end{tikzpicture}
 \end{center}
 
-Therefore, $z \notin V(e(x_3))$, morover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. Since each expression has finite depth of quantification this process will terminate eventually when $e_n(x_n) \approx \overline{c}^{(n)}(x_n)$ is strict equality and therefore, if $z \notin V(e(x_3))$ then $z \notin V(\overline{c}^{(n)}(x_n))$.
+Therefore, $z \notin V(e(x_3))$, moreover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. Since each expression has finite depth of quantification this process will terminate eventually when $e_n(x_n) \approx \overline{c}^{(n)}(x_n)$ is strict equality and therefore, if $z \notin V(e(x_3))$ then $z \notin V(\overline{c}^{(n)}(x_n))$.
 \end{proof}
 
 
