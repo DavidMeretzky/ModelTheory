@@ -66,37 +66,142 @@ February 28th, 2018
 \end{enumerate}
 \end{flushleft}
 
-\begin{lemma}
-Assume that $a(x) \approx c(x)$. Then any variable in $V(c(x))$ not present in $V(a(x))$ may be rechosen arbitrarily from the infinite set of variables not present in either.  We show this by induction on the depth of quantification of $a(x)$.
-\end{lemma}
-
-\begin{proof}
-Let $d(a(x)) = 0$. Then $a(x) = c(x)$ and therefore $V(c(x))\backslash V(a(x)) = \emptyset$. So the induction hypothesis holds in the base case.\\ 
-
-Assume for all depths of quantification less than $n$ the induction hypothesis holds. Let $d(a(x)) = d(c(x)) = n$ and $a(x) \approx c(x)$. Also let $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. Then by $\textbf{Definition 1.4}$ $3 (b)$, there exists a $e(x,x_1)$ not containing $x_2$ such that $e(x,x_1) \approx a_1(x,x_1)$ and  $e(x,x_2) \approx c_1(x,x_2)$.\\
-
-Since  the depth $d(a_1(x,x_1)) = d(e(x,x_1)) = n-1$ we have that any varible $z \in V(e(x,x_1))$ which is not in $a_1(x,x_1)$ can be rechosen arbitrarily. Since $e(x,x_2) \approx c_1(x,x_2)$, any variable $z \in V(c_1(x,x_2))$ not in $V(e(x,x_2))$ may be rechosen arbitrarily. I then claim that all variables of $V(c_1(x,x_2))$ not in $V(a_1(x,x_1))$. 
-
-% may be rechosen arbitrarily, with the possible exception of $x_2$.\\  
-% 
-% By unfolding $e(x,x_1)$ and $e(x,x_2)$ one depth of quantification further and setting both congruent to themselves, we obtain $e(x,x_1) \approx e(x,x_2)$. Hence $x_2$ may be rechosen arbitrarily since $x_2 \notin V(e(x,x_1))$.\\
-
-Suppose there is a variable $z \notin V(a_1(x,x_1))$ but present in $V(c_1(x,x_2))$.\\\\ Case 1. If $z \notin V(e(x,x_2))$, we can use the congruence $e(x,x_2) \approx c_1(x,x_2)$ to eradicate $z$.\\\\  Case 2. If $z \in V(e(x,x_2))$, then we can use the congruence $a_1(x,x_1) \approx e(x,x_1)$ to rechose $z$ in $e(x,x_1)$ if it appears there.  Consequently, the only place that $z$ could be in $e(x,x_2)$ is as in $x_2$, that is $z = x_2$.  this violates the assumption that y NEQ. 
-
-It follows that any variable in $V(c_1(x,x_2))$ not present in $V(a_1(x,x_1))$ may be rechosen arbitrarily.
-
-Since $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. The result follows: 
-\end{proof}
 
 \begin{problem}[Exercise 1.5 i)]
 Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
 \end{problem}
 
 \begin{proof}
-By definition, there exists a $c(x)$ as in $\textbf{Definition 1.4}$ $3 (b)$ such that if $w_1 = \forall x a_1(x)$ and $w_2 = \forall y a_2(y)$, we have $a_1(x) \approx c(x)$, $y \notin V(c(x))$, and $a_2(y) \approx c(y)$. 
+The base case holds because the relation is equality for depth $0$. 
 
-By the lemma, since $a_1(x) \approx c(x)$, if $z \notin V(a(x))$, then if $z \in V(c(x))$, $z$ can be rechosen arbitrarily. Since $z \notin V(w_2)$, $z \neq y$. 
+Assuming the notation of $\textbf{Definition 1.4}$ $3 (b)$, we have $c(x) \approx a$ and $c(y) \approx b$.  Assume again that $c(x) \approx a$ because there exists some $e(x_1)$ such that $e(x_1) \approx \overline{a}(x_1)$ and $e(x_2) \approx \overline{c}(x_2)$ where $a(x) = \forall x_1 \overline{a}(x_1,x)$ and $c(x) = \forall x_2 \overline{c}(x_2,x)$ and $x_2 \notin V(e(x_1))$. Now pick any variable $z' \notin V(w_1) \cup V(w_2)\cup V(c(x))$. 
+
+By the induction hypothesis, $e(x_1)$ can be chosen so that it does not contain the variable $z'$. Thus we can substitute any mentions of the variable $z$ in $e(x_1)$ with $z'$ which we have ensured is not already present without disrupting the equivalence $c(x) \approx a$.  
+
+Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is quantified over when it appears in $c(x)$ and $c(y)$. That is, $c(x) = \forall x_2c(x_2,x)$ so let $c'(x) = \forall x\overline{c}(x_3,x)$. The important thing is that $c'$ still works for $w_1 \approx w_2$. By construction, it remains true that $a \approx c'(x)$ and $b \approx c'(y)$. See the figure below
+
+%%% FIG 0 %%%%%
+\begin{center}
+\begin{tikzpicture}[commutative diagrams/every diagram]
+%\draw [help lines] (0,0) grid (12,4.5);
+\node (P0) at (2,4.5) {$w_1$};
+\node (P1) at (2,3) {$a(x)$};
+\node (P2) at (2,1.5) {$\overline{a}(x_1,x)$};
+\node (P3) at (10,4.5) {$w_2$};
+
+
+\node (P4) at (10,3) {$b(y)$};
+\node (P5) at (10,1.5) {$\overline{b}(y_1,y)$};
+\node (P6) at (3.5,2.5) {$c(x)$};
+\node (P7) at (8.5,2.5) {$c(y)$};
+
+\node (P8) at (3.5,1) {$\overline{c}(x_2,x)$};
+\node (P9) at (8.5,1) {$\overline{c}(x_2,y)$};
+
+\node (P10) at (5,2) {$c'(x)$};
+\node (P11) at (7,2) {$c'(y)$};
+
+\node (P12) at (5,.5) {$\overline{c}(x_3,x)$};
+\node (P13) at (7,.5) {$\overline{c}(x_3,y)$};
+
+% es
+\node (P14) at (0,1) {$e(x_1,x)$};
+\node (P15) at (1.5,.5) {$e(x_2,x)$};
+\node (P16) at (3,0) {$e(x_3,x)$};
+
+\node (P17) at (12,1) {$e(y_1,y)$};
+\node (P18) at (10.5,.5) {$e(y_2,y)$};
+\node (P19) at (9,0) {$e(x_3,y)$};
+
+\path[commutative diagrams/.cd, every arrow, every label]
+
+%w_1 to a(x)
+(P1) edge node[swap] {$\forall x$} (P0)
+
+% \overline{a}(x_1, x) to a(x) 
+(P2) edge node[swap] {$\forall x_1$} (P1)
+
+%w_2 to b(y)
+(P4) edge node[swap] {$\forall y$} (P3)
+
+% \overline{b}(y_1, y) to a(y) 
+(P5) edge node[swap] {$\forall y_1$} (P4)
+
+
+%\overline{c}(x_2, x) to c(x)
+(P8) edge node[swap] {$\forall x_2$} (P6)
+
+% \overline{c}(y_1, y) to c(y) 
+(P9) edge node[swap] {$\forall x_2$} (P7)
+
+% similarity from a to c(y)
+(P1) edge [-,dashed] (P6)
+
+% similarity from b to c(y)
+(P4) edge [-, dashed] (P7)
+
+% similarity from a to c(y)
+(P6) edge [-,dashed] (P10)
+
+% similarity from b to c(y)
+(P7) edge [-, dashed] (P11)
+
+% similarity from a to c(y)
+(P12) edge node[swap] {$\forall x_3$} (P10)
+
+% similarity from a to c(y)
+(P13) edge node[swap] {$\forall x_3$} (P11)
+
+
+% eees
+(P2) edge [-, dashed] (P14)
+(P8) edge [-, dashed] (P15)
+(P12) edge [-, dashed] (P16)
+
+(P5) edge [-, dashed] (P17)
+(P9) edge [-, dashed] (P18)
+(P13) edge [-, dashed] (P19);
+
+\end{tikzpicture}
+\end{center}
+
+Therefore, $z \notin V(e(x_3))$, morover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. Since each expression has finite depth of quantification this process will terminate eventually when $e_n(x_n) \approx \overline{c}^{(n)}(x_n)$ is strict equality and therefore, if $z \notin V(e(x_3))$ then $z \notin V(\overline{c}^{(n)}(x_n))$.
 \end{proof}
+
+
+
+
+% \begin{lemma}
+% Assume that $a(x) \approx c(x)$. Then any variable in $V(c(x))$ not present in $V(a(x))$ may be rechosen arbitrarily from the infinite set of variables not present in either.  We show this by induction on the depth of quantification of $a(x)$.
+% \end{lemma}
+% 
+% \begin{proof}
+% Let $d(a(x)) = 0$. Then $a(x) = c(x)$ and therefore $V(c(x))\backslash V(a(x)) = \emptyset$. So the induction hypothesis holds in the base case.\\ 
+% 
+% Assume for all depths of quantification less than $n$ the induction hypothesis holds. Let $d(a(x)) = d(c(x)) = n$ and $a(x) \approx c(x)$. Also let $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. Then by $\textbf{Definition 1.4}$ $3 (b)$, there exists a $e(x,x_1)$ not containing $x_2$ such that $e(x,x_1) \approx a_1(x,x_1)$ and  $e(x,x_2) \approx c_1(x,x_2)$.\\
+% 
+% Since  the depth $d(a_1(x,x_1)) = d(e(x,x_1)) = n-1$ we have that any varible $z \in V(e(x,x_1))$ which is not in $a_1(x,x_1)$ can be rechosen arbitrarily. Since $e(x,x_2) \approx c_1(x,x_2)$, any variable $z \in V(c_1(x,x_2))$ not in $V(e(x,x_2))$ may be rechosen arbitrarily. I then claim that all variables of $V(c_1(x,x_2))$ not in $V(a_1(x,x_1))$. 
+% 
+% % may be rechosen arbitrarily, with the possible exception of $x_2$.\\  
+% % 
+% % By unfolding $e(x,x_1)$ and $e(x,x_2)$ one depth of quantification further and setting both congruent to themselves, we obtain $e(x,x_1) \approx e(x,x_2)$. Hence $x_2$ may be rechosen arbitrarily since $x_2 \notin V(e(x,x_1))$.\\
+% 
+% Suppose there is a variable $z \notin V(a_1(x,x_1))$ but present in $V(c_1(x,x_2))$.\\\\ Case 1. If $z \notin V(e(x,x_2))$, we can use the congruence $e(x,x_2) \approx c_1(x,x_2)$ to eradicate $z$.\\\\  Case 2. If $z \in V(e(x,x_2))$, then we can use the congruence $a_1(x,x_1) \approx e(x,x_1)$ to rechose $z$ in $e(x,x_1)$ if it appears there.  Consequently, the only place that $z$ could be in $e(x,x_2)$ is as in $x_2$, that is $z = x_2$.  this violates the assumption that y NEQ. 
+% 
+% It follows that any variable in $V(c_1(x,x_2))$ not present in $V(a_1(x,x_1))$ may be rechosen arbitrarily.
+% 
+% Since $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. The result follows: 
+% \end{proof}
+% 
+% \begin{problem}[Exercise 1.5 i)]
+% Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
+% \end{problem}
+% 
+% \begin{proof}
+% By definition, there exists a $c(x)$ as in $\textbf{Definition 1.4}$ $3 (b)$ such that if $w_1 = \forall x a_1(x)$ and $w_2 = \forall y a_2(y)$, we have $a_1(x) \approx c(x)$, $y \notin V(c(x))$, and $a_2(y) \approx c(y)$. 
+% 
+% By the lemma, since $a_1(x) \approx c(x)$, if $z \notin V(a(x))$, then if $z \in V(c(x))$, $z$ can be rechosen arbitrarily. Since $z \notin V(w_2)$, $z \neq y$. 
+% \end{proof}
 
 \begin{problem}[Exercise 1.5 ii)]
 If $u(x) \approx v(x)$ and $y \notin V(u(x)) \cup V(v(x))$, show by induction over $d(u(x))$ that $u(y) \approx v(y)$.
