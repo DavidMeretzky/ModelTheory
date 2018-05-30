@@ -1,0 +1,130 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {\itshape}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{lemmastyle}
+
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{theoremstyle}
+
+\newtheorem{theorem}{Theorem}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 4 Predicate Calculus \\
+Section 1 Algebra of Predicates \\
+Proof of Transitivity 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+February 28th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{flushleft}
+\textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
+
+\begin{enumerate}
+\item $d(w_1) = d(w2) = 0$ and $w_1 = w_2$. Generating the free proposition algebra on $F_0$ that is, all generators and $\textbf{F}$, that is $F_0$ are of depth 0. The use of $\Rightarrow$ does not increase the depth of quantification. Thus the equivalence relation on the proposition algebra contained in the predicate algebra $\widetilde{P}(V,\mathscr{R})$ is just equality. 
+\item $d(w_1) = d(w_2) > 0$, $w_1 = a_1 \Rightarrow b_1$, $w_2 = a_2 \Rightarrow b_2$, $a_1 \approx a_2$ and $b_1 \approx b_2$ or 
+\item $w_1 = (\forall x)(a)$, $w_2 = (\forall y)b$, and either
+\begin{enumerate}
+\item $x = y$ and $a \approx b$   (actually up to this point, this means iff they are equal)
+\item There exists a $c = c(x)$ such that $c(x) \approx a$ and $c(y) \approx b$ and $y \notin V(c)$ 
+\end{enumerate}
+\end{enumerate}
+\end{flushleft}
+
+\begin{lemma}
+Assume that $a(x) \approx c(x)$. Then any variable in $V(c(x))$ not present in $V(a(x))$ may be rechosen arbitrarily from the infinite set of variables not present in either.  We show this by induction on the depth of quantification of $a(x)$.
+\end{lemma}
+
+\begin{proof}
+Let $d(a(x)) = 0$. Then $a(x) = c(x)$ and therefore $V(c(x))\backslash V(a(x)) = \emptyset$. So the induction hypothesis holds in the base case.\\ 
+
+Assume for all depths of quantification less than $n$ the induction hypothesis holds. Let $d(a(x)) = d(c(x)) = n$ and $a(x) \approx c(x)$. Also let $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. Then by $\textbf{Definition 1.4}$ $3 (b)$, there exists a $e(x,x_1)$ not containing $x_2$ such that $e(x,x_1) \approx a_1(x,x_1)$ and  $e(x,x_2) \approx c_1(x,x_2)$.\\
+
+Since  the depth $d(a_1(x,x_1)) = d(e(x,x_1)) = n-1$ we have that any varible $z \in V(e(x,x_1))$ which is not in $a_1(x,x_1)$ can be rechosen arbitrarily. Since $e(x,x_2) \approx c_1(x,x_2)$, any variable $z \in V(c_1(x,x_2))$ not in $V(e(x,x_2))$ may be rechosen arbitrarily. I then claim that all variables of $V(c_1(x,x_2))$ not in $V(a_1(x,x_1))$. 
+
+% may be rechosen arbitrarily, with the possible exception of $x_2$.\\  
+% 
+% By unfolding $e(x,x_1)$ and $e(x,x_2)$ one depth of quantification further and setting both congruent to themselves, we obtain $e(x,x_1) \approx e(x,x_2)$. Hence $x_2$ may be rechosen arbitrarily since $x_2 \notin V(e(x,x_1))$.\\
+
+Suppose there is a variable $z \notin V(a_1(x,x_1))$ but present in $V(c_1(x,x_2))$.\\\\ Case 1. If $z \notin V(e(x,x_2))$, we can use the congruence $e(x,x_2) \approx c_1(x,x_2)$ to eradicate $z$.\\\\  Case 2. If $z \in V(e(x,x_2))$, then we can use the congruence $a_1(x,x_1) \approx e(x,x_1)$ to rechose $z$ in $e(x,x_1)$ if it appears there.  Consequently, the only place that $z$ could be in $e(x,x_2)$ is as in $x_2$, that is $z = x_2$.  this violates the assumption that y NEQ. 
+
+It follows that any variable in $V(c_1(x,x_2))$ not present in $V(a_1(x,x_1))$ may be rechosen arbitrarily.
+
+Since $a(x) = \forall x_1 a_1(x,x_1)$ and $c(x) = \forall x_2 c_1(x,x_2)$. The result follows: 
+\end{proof}
+
+\begin{problem}[Exercise 1.5 i)]
+Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that the element $c = c(x)$ in $\textbf{Definition 1.4}$ $3 (b)$ can always be chosen such that $z \notin V(c).$
+\end{problem}
+
+\begin{proof}
+By definition, there exists a $c(x)$ as in $\textbf{Definition 1.4}$ $3 (b)$ such that if $w_1 = \forall x a_1(x)$ and $w_2 = \forall y a_2(y)$, we have $a_1(x) \approx c(x)$, $y \notin V(c(x))$, and $a_2(y) \approx c(y)$. 
+
+By the lemma, since $a_1(x) \approx c(x)$, if $z \notin V(a(x))$, then if $z \in V(c(x))$, $z$ can be rechosen arbitrarily. Since $z \notin V(w_2)$, $z \neq y$. 
+\end{proof}
+
+\begin{problem}[Exercise 1.5 ii)]
+If $u(x) \approx v(x)$ and $y \notin V(u(x)) \cup V(v(x))$, show by induction over $d(u(x))$ that $u(y) \approx v(y)$.
+\end{problem}
+
+\begin{proof}
+The base case holds because the relation is equality for depth $0$. 
+
+Suppose the result holds for depth of quantification less than $n$. Then let $d(u(x)) = d(v(x)) = n$.  Let $u(x) = \forall x_1 u_1(x,x_1)$ and $v(x) = \forall x_2 v_1(x,x_2)$. Then there exists a $c(x,x_1)$  such that $u_1(x,x_1) \approx c(x,x_1)$ and $c(x,x_2) \approx v_1(x,x_2)$ such that $x_2 \notin V(c)$. By $\textbf{Problem 1}$ we have that $y \notin V(c)$.\\
+
+By the induction hypothesis, since the depth of $u_1$ $v_1$ and $c$ are all $n-1$ we have that $u_1(y,x_1) \approx c(y,x_1)$ and $c(y,x_2) \approx v_1(y,x_2)$. Then by definition, since $u(y) = \forall x_1 u_1(y,x_1)$ and $v(y) = \forall x_2 v_1(y,x_2)$, we have proven $u(y) \approx v(y)$.
+\end{proof}
+
+\begin{problem}[Exercise 1.5 iii)]
+Show that the relation is transitive. 
+\end{problem}
+
+\begin{proof}
+Let $w_1 \approx w_2$ and $w_2 \approx w_3$. Assume the relation is transitive for lower depths of quantification. Since the relation is defined to be strict equivalence at depth $0$, the base case holds.\\\\ The proof is given in the worst possible case: We begin by twice invoking $\textbf{Definition 1.4}$ $3 (b)$. \\
+
+Let $w_1 = \forall x a_1(x)$, $w_2 = \forall y a_2(y)$, and $w_3 = \forall z a_3(z)$. We have that there exists $c_1(x)$ and $c_2(y)$, such that $y \notin c_1(x)$ and $z \notin c_2(y)$. Also, because of $\textbf{Problem 1}$ we may require that $z \notin c_1(x)$ and $x \notin c_2(y)$.  By part $3 (b)$, of the definition $w_1 \approx w_2$ is defined to mean, $a_1(x) \approx c_1(x)$ and $c_1(y) \approx a_2(y)$. Likewise, $w_2 \approx w_3$ means that $a_2(y) \approx c_2(y)$ and $c_2(z) \approx a_3(z)$.\\
+
+By the induction hypothesis, since $c_1(y) \approx a_2(y)$ and $a_2(y) \approx c_2(y)$, we have $c_1(y) \approx c_2(y)$. Note also that neither $c_1(y)$ nor $c_2(y)$ contains either $x$ or $z$.\\
+
+By $\textbf{Problem 2}$ we have that  $c_1(x) \approx c_2(x)$. Then applying the induction hypothesis again, we obtain from $a_1(x) \approx c_1(x)$ and $c_1(x) \approx c_2(x)$, that $a_1(x) \approx c_2(x)$. Note also that since $c_2(z) \approx a_3(z)$, we have bridged the gap and it follows that $w_1 \approx w_3$.
+
+Other cases follow from just $\textbf{Problem 1}$ and the induction hypothesis alone. 
+
+\end{proof}
+
+\end{document}
