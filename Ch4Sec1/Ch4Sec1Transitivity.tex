@@ -53,6 +53,19 @@ May 30th, 2018
 \maketitle
 
 \begin{flushleft}
+\textbf{Definition 1.3} Let $w \in \widetilde{P}(V,\mathscr{R})$ the $depth$ $of$ $quantification$ of $w$, denoted by $d(w)$, is defined by 
+
+\begin{enumerate}
+\item $d(\textbf{F}) = 0$, $d(r(x_1,x_2,...,x_n)) = 0$ for every free generator of $\widetilde{P}(V,\mathscr{R})$. Note, since $F_0$ in the construction of $\widetilde{P}(V,\mathscr{R})$ is the union of $T_0 = \{\textbf{F}\}$ and the generators which are of the form $r(x_1,x_2,...,x_n)$ for $r \in \mathscr{R}$ and $x_1,x_2,...,x_n \in V$, then we can say for all $f \in F_0$, $d(f) = 0$. 
+
+\item $d(w_1 \Rightarrow w_2) = max(d(w_1),d(w_2))$
+
+\item $d((\forall x)(w)) = 1 + d(w)$ for $x \in V$ 
+\end{enumerate}
+\end{flushleft}
+Our desired congruence relation on $\widetilde{P}(V,\mathscr{R})$ may now be defined.
+
+\begin{flushleft}
 \textbf{Definition 1.4} Let $w_1$, $w_2 \in \widetilde{P}(V,\mathscr{R})$ define $w_1 \approx w_2$ if
 
 \begin{enumerate}
@@ -73,13 +86,29 @@ Given that $z \notin V(w_1) \cup V(w_2)$ show by induction over $d(w_1)$ that th
 \end{problem}
 
 \begin{proof}
-The base case holds because the relation is equality for depth $0$. 
+Assuming the notation of $\textbf{Definition 1.4}$ $3 (b)$, we have $c(x) \approx a$ and $c(y) \approx b$.\\ 
 
-Assuming the notation of $\textbf{Definition 1.4}$ $3 (b)$, we have $c(x) \approx a$ and $c(y) \approx b$.  Assume again that $c(x) \approx a$ because there exists some $e(x_1)$ such that $e(x_1) \approx \overline{a}(x_1)$ and $e(x_2) \approx \overline{c}(x_2)$ where $a(x) = \forall x_1 \overline{a}(x_1,x)$ and $c(x) = \forall x_2 \overline{c}(x_2,x)$ and $x_2 \notin V(e(x_1))$. Now pick any variable $z' \notin V(w_1) \cup V(w_2)\cup V(c(x))$. 
+The base case $d(w_1) = 1$ holds because the relation $c(x) \approx a$ is equality for depth $0$ and therefore, $V(c(x)) = V(a)$. Since $w_1 = (\forall x)(a)$, we have that $z \notin V(a)$ and therefore, $z \notin V(c)$.\\ 
+
+Now let $d(w_1) = n+1$. The relations $c(x) \approx a$ and $c(y) \approx b$ are happening at depth $n$. The claim is that at every depth $n$ the relations $c(x) \approx a$ and $c(y) \approx b$ can be replaced by depth $n-1$ expressions. Finally, since all expressions are finite compositions of operations, this process terminates at depth zero where we invoke the base case.\\ 
+
+The relations $c(x) \approx a$ and $c(y) \approx b$ at depth $n > 0$ hold because of any one of the following 3 possiblilities: $\textbf{Definition 1.4}$ $2$, $\textbf{Definition 1.4}$ $3 (a)$ or $\textbf{Definition 1.4}$ $3 (b)$.  Note that $c(x) \approx a$ and $c(y) \approx b$ could each hold because of a different case potentially. However, their depths of quantification must match. 
+
+So without loss of generality we just show how the relation $c(x) \approx a$ can be reduced to a lower depth expression  $\overline{c}(x) \approx \overline{a}$ while guaranteeing that $z \notin V(c) - V(\overline{c})$. 
+
+\section*{Cases}
+\subsection*{$\textbf{Definition 1.4}$ $\textbf{2}$} 
+Assume now that $c(x) \approx a$ because of $\textbf{Definition 1.4}$ $2$. That is to say $a = a_1 \Rightarrow a_2$, $c = c_1 \Rightarrow c_2$, and therefore, $a_1 \approx c_1$ and $a_2 \approx c_2$. The definition of depth of $a$ is $max(a_1, a_2)$ and since  $a_1 \approx c_1$ and $a_2 \approx c_2$ implies that $d(a_1) = d(c_1)$ and $d(a_2) = d(c_2)$, $d(a) = d(max(a_1, a_2)) = d(max(c_1, c_2)) = d(c(x))$. We already knew in fact that $d(a) = d(c(x)$. Thus the relation $c(x) \approx a$ has been reduced to the two relations $a_1 \approx c_1$ and $a_2 \approx c_2$. One of these expressions is of depth equal to $c(x) \approx a$ and one is of depth less than or equal to $c(x) \approx a$.  The relations $a_1 \approx c_1$ and $a_2 \approx c_2$ each hold because of any one of the $3$ cases. Since (in prefix notation) an expression may only begin with at most finitely many $\Rightarrow$ eventually it will begin with a quantifier which brings us to cases 2 and 3 where we lower the depth of quantification in all cases. 
+
+\subsection*{$\textbf{Definition 1.4}$ $\textbf{3 (a)}$} 
+Assume now that $c(x) \approx a$ because of $\textbf{Definition 1.4}$ $3 (a)$. That is, $c(x) = \forall x_2\overline{c}(x_2,x)$ and $a(x) = \forall x_2\overline{a}(x_2,x)$. Then $\forall x_2\overline{c}(x_2,x) \approx \forall x_2\overline{a}(x_2,x)$ and $\overline{c}(x_2,x) \approx \overline{a}(x_2,x)$. The depth of the problem has just been reduced by one depth of quantification. Note that the relation $\overline{c}(x_2,x) \approx \overline{a}(x_2,x)$ could hold because of any one of the three cases. 
+
+\subsection*{$\textbf{Definition 1.4}$ $\textbf{3 (b)}$} 
+Assume now that $c(x) \approx a$ because there exists some $e(x_1)$ such that $e(x_1) \approx \overline{a}(x_1)$ and $e(x_2) \approx \overline{c}(x_2)$ where $a(x) = \forall x_1 \overline{a}(x_1,x)$ and $c(x) = \forall x_2 \overline{c}(x_2,x)$ and $x_2 \notin V(e(x_1))$. Now pick any variable $z' \notin V(w_1) \cup V(w_2)\cup V(c(x))$.  
 
 By the induction hypothesis, $e(x_1)$ can be chosen so that it does not contain the variable $z'$. Thus we can substitute any mentions of the variable $z$ in $e(x_1)$ with $z'$ which we have ensured is not already present without disrupting the equivalence $c(x) \approx a$.  
 
-Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is quantified over when it appears in $c(x)$ and $c(y)$. That is, $c(x) = \forall x_2c(x_2,x)$ so let $c'(x) = \forall x\overline{c}(x_3,x)$. The important thing is that $c'$ still works for $w_1 \approx w_2$. By construction, it remains true that $a \approx c'(x)$ and $b \approx c'(y)$. See the figure below
+Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is quantified over when it appears in $c(x)$ and $c(y)$. That is, $c(x) = \forall x_2c(x_2,x)$ so let $c'(x) = \forall x\overline{c}(x_3,x)$. The important thing is that $c'$ still works in $\textbf{Definition 1.4}$ $3 (b)$ for $w_1 \approx w_2$. By construction, it remains true that $a \approx c'(x)$ and $b \approx c'(y)$ because $e(x_1, x) \approx \overline{a}(x_1, x)$ and $e(x_3,x) \approx \overline{c}(x_3,x)$. $\textit{In the figure below both of the relations}$ $c(x) \approx a$ $\textit{and}$ $c(y) \approx b$ $\textit{hold because of case 3 although this need not be the case}$
 
 %%% FIG 0 %%%%%
 \begin{flushleft}
@@ -166,10 +195,18 @@ Suppose however, that the variable $x_2 = z$, then we may rechose $x_2$ which is
 \end{tikzpicture}
 \end{flushleft}
 
-Therefore, $z \notin V(e(x_3))$, moreover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. Since each expression has finite depth of quantification this process will terminate eventually when $e_n(x_n) \approx \overline{c}^{(n)}(x_n)$ is strict equality and therefore, if $z \notin V(e(x_3))$ then $z \notin V(\overline{c}^{(n)}(x_n))$.
+Therefore, $z \notin V(e(x_3))$, moreover, $z \neq x_3$.  In order to show that $z \notin c'(x)$ all that remains is to show that $z\notin V(\overline{c}(x_3)) - {x_3}$. Notice that we have just reduced the problem by one degree of quantification. 
+
+More precisely, $z \notin V(e(x_3,x))$ and $z \notin V(e(x_3,y))$. Also, $e(x_3,x) \approx \overline{c}(x_3,x)$ and $e(x_3,y) \approx \overline{c}(x_3,y)$.  At the previous level, $a(x)$ played the role of $e(x_3,x)$ in the induction and $b(y)$ played the role of $e(x_3,y)$. Explicitly in the statement of the problem, since $x_3 \neq z$, we could let  $\forall x_3e(x_3,x)$ play the role of $w_1$ and depending on why $c(y) \approx b$ in case 3 let $\forall x_3e(x_3,y)$ play the role of $w_2$ or if $c(y) \approx b$ holds because of case $2$ let $b$ play the role of $w_2$, $c$ is then played by $\overline{c}(x_3,x)$. 
+
+Thus we have reduced the depth of quantification by $1$. 
 \end{proof}
 
-
+% Here is a note now on why I believe it suffices to consider only the case where $a(x)$ and $b(x)$, and their lower depth analogues begin with a quantifier and not an $\Rightarrow$ operator. This is equivalent to saying that, $a(x) \approx c(x)$ and $b(y) \approx c(y)$ because of $\textbf{Definition 1.4}$ $3 (b)$. \\ 
+% 
+% From the definitions, in this case  $p_1 \approx p_2$   means that $(a_1 \Rightarrow b_1) \approx (a_2 => b_2)$  which happens iff $a_1 \approx a_2$ and $b_1 \approx b_2$.  However, the depth of the expression $d(p_j) = max(d(a_j),d(b_j))$. 
+% 
+% Taken together, this means that in $p_1 \approx p_2$, if $p_j$ begins with an implication $=>$, then this reduces to the case $a_1 \approx a_2$ if $d(a_1)>d(b_1)$ otherwise $b_1 \approx b_2$. Again, we always have $d(a_1) = d(a_2)$ if $a_1 \approx a_2$. By the maximality condition, $d(p_j) = d(a_j)$ and $d(a_j)$ begins with a quantifier (actually it just begins with one less implication but iterating this process we can remove all implications without affecting the depth of quantification).
 
 
 % \begin{lemma}
