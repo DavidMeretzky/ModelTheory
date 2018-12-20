@@ -8,7 +8,7 @@
 \newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
         {12pt}                                               % <space above>
         {}                                               % <space below>
-        {\itshape}                               % <body font>
+        {}                               % <body font>
         {}                                                  % <indent amount}
         {\bfseries}                 % <theorem head font>
         {\normalfont\bfseries.}         % <punctuation after theorem head>
@@ -27,6 +27,12 @@
 \theoremstyle{theoremstyle}
 
 \newtheorem{theorem}{Theorem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+\setlength\parindent{0pt}
 
 \title{ \vspace{-10ex} %uncomment to remove vertical space
 %title of assignment goes here e.g. "Math 721 Homework 3"
@@ -264,10 +270,45 @@ Let $w_1 = \forall x a_1(x)$, $w_2 = \forall y a_2(y)$, and $w_3 = \forall z a_3
 
 By the induction hypothesis, since $c_1(y) \approx a_2(y)$ and $a_2(y) \approx c_2(y)$, we have $c_1(y) \approx c_2(y)$. Note also that neither $c_1(y)$ nor $c_2(y)$ contains either $x$ or $z$.\\
 
-By $\textbf{Problem 2}$ we have that  $c_1(x) \approx c_2(x)$. Then applying the induction hypothesis again, we obtain from $a_1(x) \approx c_1(x)$ and $c_1(x) \approx c_2(x)$, that $a_1(x) \approx c_2(x)$. Note also that since $c_2(z) \approx a_3(z)$, we have bridged the gap and it follows that $w_1 \approx w_3$.
+By $\textbf{Problem 2}$ we have that  $c_1(x) \approx c_2(x)$. Then applying the induction hypothesis again, we obtain from $a_1(x) \approx c_1(x)$ and $c_1(x) \approx c_2(x)$, that $a_1(x) \approx c_2(x)$. Note also that since $c_2(z) \approx a_3(z)$, we have bridged the gap and it follows that $w_1 \approx w_3$.\\
 
 Other cases follow from just $\textbf{Problem 1}$ and the induction hypothesis alone. 
 
+\end{proof}
+
+\noindent
+\textbf{Definition 1.6}
+The reduced first order algebra $P(V, \mathscr{R})$ on $(V, \mathscr{R})$ is the factor algebra of $\widetilde{P}(V,\mathscr{R})$ by the congruence relation $\approx$.\\ 
+
+\noindent
+The elements of $P = P(V,\mathscr{R})$ are the congruence classes.\\ 
+
+\textbf{Proposition} If $w \in \widetilde{P}$ and $[w]$ is the congruence class of $w$, then $$(\forall x)[w] = [(\forall x)w],$$ and $$[w_1] \Rightarrow [w_2] = [w_1 \Rightarrow w_2].$$
+
+\begin{proof}
+Let $\widetilde{w}_1$ and $\widetilde{w}_2$ be representatives of $[w]$. Thus $\widetilde{w}_1 \approx \widetilde{w}_2$. By \textbf{Definition 1.4} $3a)$ $(\forall x)\widetilde{w}_1 \approx (\forall x)\widetilde{w}_2$.\\
+
+By definition  \textbf{Definition 1.4} $2$ the second result follows. 
+\end{proof}
+
+\textbf{Definition 1.7} Let $w \in P$. We define the set $var(w)$ of (\textit{free}) \textit{variables of $w$} by putting $var(w) = var(\widetilde{w})$, where $\widetilde{w} \in \widetilde{P}$ is some representative of the congruence class $w$, and where $var(\widetilde{w})$ is defined inductively by 
+\begin{enumerate}
+\item $var(\textbf{F}) = \emptyset$,
+\item $var(r(x_1,...,x_n)) = \{x_1,...,x_n\}$ for $r \in \mathscr{R}$, $x_1,...,x_n \in V$,
+\item $var(\widetilde{w}_1 \Rightarrow \widetilde{w}_2) = var(\widetilde{w_1})\cup var(\widetilde{w_2}))$,
+\item $var((\forall x)\widetilde{w}) = var(\widetilde{w})-\{x\}$.
+\end{enumerate}
+
+This captures the free or unbound variables in the predicate. 
+
+\textbf{Definition 1.8} Let $A \subseteq P$. Put $$var(A) = \bigcup_{p \in A}var(p)$$.
+
+\begin{problem}
+Show that if $\widetilde{w}_1 \approx \widetilde{w}_2$, then $var(\widetilde{w}_1) = var(\widetilde{w}_2)$, and conclude that $var(w)$ is well defined for $w \in P$. 
+\end{problem}
+
+\begin{proof}
+Suppose that $\widetilde{w}_1 \approx \widetilde{w}_2$ and 
 \end{proof}
 
 \end{document}
