@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{problemstyle}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{problemstyle}
+\newtheorem{example}{Example}
+
+\setlength\parindent{0pt}
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 3 Properties of the Propositional Calculus \\
+Section 1 Introduction  \\
+Exercises 
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+December 20th, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+A $\textit{logic}$ $\mathscr{L}$ is a system consisting of a set $P$ of elements (called propositions), a set $\mathscr{V}$ of functions (called valuations) from $P$ to some value set $W$, and, for each subset $A$ of $P$, a set of finite sequences of elements of $P$ (called proofs from the assumptions $A$). 
+\end{definition}
+
+\begin{example}
+The logic called The Propositional Calculus on the set $X$, denoted $Prop(X)$, consists of the set $\mathscr{V}$ of all homomorphisms of $P(X)$ onto $\mathbb{Z}_2$, and the set of proofs defined as in section $4$ of chapter $2$.  
+\end{example}
+
+\begin{definition}
+A logic $\mathscr{L}$ is \textit{sound} if $A \vdash p$ implies that $A \models p$. 
+\end{definition}
+
+\begin{definition}
+A logic $\mathscr{L}$ is \textit{consistent} if $F$ is not a theorem. 
+\end{definition}
+
+\begin{definition}
+A logic $\mathscr{L}$ is \textit{adequate} if $A \models p$ implies that $A \implies p$. 
+\end{definition}
+
+\begin{definition}
+A proposition is $valid$ or $tautological$ in a logic if for every valuation $v \in \mathscr{V}$, $v(p) = 1$ where $W = \mathbb{Z}_2$ and $1$ captures our intuitive notion of truth.
+\end{definition}
+
+\begin{definition}
+A logic $\mathscr{L}$ is \textit{decidable for validity} if there exists an algorithm which determines for every proposition $p$, in a finite number of steps, whether or not $p$ is valid. 
+\end{definition}
+
+\begin{definition}
+A logic $\mathscr{L}$ is \textit{decidable for provability} if there exists an algorithm which determines for every proposition $p$, in a finite number of steps, whether or not $p$ is a theorem. 
+\end{definition}
+
+\end{document}
