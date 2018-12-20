@@ -299,16 +299,18 @@ By definition  \textbf{Definition 1.4} $2$ the second result follows.
 \item $var((\forall x)\widetilde{w}) = var(\widetilde{w})-\{x\}$.
 \end{enumerate}
 
-This captures the free or unbound variables in the predicate. 
+This captures the free or unbound variables in the predicate.\\ 
 
-\textbf{Definition 1.8} Let $A \subseteq P$. Put $$var(A) = \bigcup_{p \in A}var(p)$$.
+\textbf{Definition 1.8} Let $A \subseteq P$. Put $$var(A) = \bigcup_{p \in A}var(p).$$
 
 \begin{problem}
 Show that if $\widetilde{w}_1 \approx \widetilde{w}_2$, then $var(\widetilde{w}_1) = var(\widetilde{w}_2)$, and conclude that $var(w)$ is well defined for $w \in P$. 
 \end{problem}
 
 \begin{proof}
-Suppose that $\widetilde{w}_1 \approx \widetilde{w}_2$ and 
+Suppose that $\widetilde{w}_1 \approx \widetilde{w}_2$. If the depth of quantification is $0$ the equivalence relation is strict equality and the sets of variables are obviously equal. 
+
+Suppose the result holds for depths of quantification lower than $n$ and that the $\widetilde{w}_1 \approx \widetilde{w}_2$ holds at depth $n$. We will only discuss the case where \textbf{Definition 1.4} $3a)$ holds. In this case apply $\textbf{Definition 1.7}$ $4.$ The result follows. 
 \end{proof}
 
 \end{document}
