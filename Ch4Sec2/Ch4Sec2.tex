@@ -51,7 +51,7 @@ December 20, 2018
 } 
 
 
-\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+\renewcommand*{\thefootnote}{\roman{footnote}}%{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
 
 \begin{document}
 
@@ -76,7 +76,31 @@ Given $(U, \varphi, \psi)$ there is exactly one function $v:P \rightarrow \mathb
 \end{problem}
 
 \begin{proof}
-Let $w$ and $v$ both be functions which satistfy (a), (b) and $(\text{c}_\text{k})$ for all $k$. Let $p \in P$ at depth $k=0$. By (a), $w(p) = v(p)$. Suppose $v = w$ up to depth $k-1$. Let $p \in P$ at depth $k=0$. 
+Let $w$ and $v$ both be functions which satistfy (a), (b) and $(\text{c}_\text{k})$ for all $k$. Let $p \in P$ at depth $0$. By (a), $w(p) = v(p)$. Suppose $v = w$ up to depth $k-1$. Let $p = (\forall x) q(x) \in P$ at depth $k$.\\ 
+
+We have that $v(p) = 1$ only if for all possible interpretations of a new variable $t$, $v_{k-1}'(q(t))=1$ suppose there is an interpretation of $t$, $\varphi'(t)$ such that $v_{k-1}'(q(t))=0$, then $w_{k-1}'(q(t))=0$ by the induction hypothesis $v_{k-1}' = w_{k-1}'$ since they have the same triple $(U, \varphi', \psi)$, therefore, $v = w$. 
 \end{proof}
+
+\begin{definition}
+An $interpretation$ of $P = P(V,\mathscr{R})$ in the domain $U$ is a quadruple $(U,\varphi,\psi,v)$ satisfy the conditions (a), (b) and $(\text{c}_\text{k})$ for all $k$.
+\end{definition}
+
+\begin{problem}
+Let $w(u_1,..,u_n)$ be any tautology of $Prop(\{u_1,...,u_n\})$. Let $p_1,...,p_n \in P(V,\mathscr{R})$. Prove that $\vDash w(p_1,...,p_n)$
+\end{problem}
+
+\begin{proof}
+Note that $v$ is required to be a $\{\Rightarrow, \textbf{F}\}$-algebra homomorphism. Thus $v(w(p_1,...,p_n)) = w(v(p_1),...,v(p_n))$ in $\mathbb{Z}_2$. However, regardless of the truth value of $v(p_1),...,v(p_n)$ in $\mathbb{Z}_2$, $w(v(p_1),...,v(p_n)) = 1$. 
+\end{proof}
+
+\begin{problem}
+Let $A \subseteq P(V,\mathscr{R})$ and $p(x) \in A$ for all $x \in V$. Does it follow that $A \vDash (\forall x)p(x)$? No, it does not follow.
+\end{problem}
+
+\begin{proof}
+Let $u \in U$ such that $u \notin range(\varphi) \subseteq U$.\footnote{The text explicitly states ``Of course, not every element $u \in U$ need have a name, while some elements $u$ may well have more than one name."} Let $(U,\varphi,\psi,v)$ be an interpretation such that $v(q) = 1$ for all $q \in A$. Let $\varphi'$ be the extension of $\varphi$ such that $\varphi'(t) = u$. Then we have no knowledge about the value of $v(p(t))$. For contrast, if we take $v(p(x))$, we know that $p(x) \in A$ thus $v(p(x)) = 1$.  
+\end{proof}
+
+In particular, the statement ``For any $x$ in $A$, $v(p(x)) = 1$" describes quantification over the range of $\phi$, a subset of $U$, while the expression  ``$v((\forall x)p(x)) = 1$" describes quantification over the entirety of $U$. The trick of requiring $t \notin V$ is exactly adding a basepoint of $V$ to encode that $\phi$ is potentially a partial function. \footnote{The category of sets and partial functions is equivalent to the category of sets with specified base point and total functions.} 
 
 \end{document}
