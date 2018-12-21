@@ -1,0 +1,82 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{lemmastyle}
+
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{theoremstyle}
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+\setlength\parindent{0pt}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 4 Predicate Calculus \\
+Section 2 Interpretations \\
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+December 20, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+Let $P(V,\mathscr{R})$ be the reduced first order algebra on $(V,\mathscr{R})$. We would like to create semantics for $P(V,\mathscr{R})$ in such a way that the statement that a certain collection of variables in $V$ which we interpret in the context of some set $U$, satisfy some relation in $\mathscr{R}$ is true if and only if the relation is satisfied in that context.\\
+
+In particular, if we are interested in some collection of mathematical objects $U$ we can think of an element $x \in V$ as being the name of the object $u \in U$ by defining a function $\varphi:V \rightarrow U$ such that $\varphi(x) = u$. Similarly, if there exists a relation on the set $U$ and we want to disucss whether or not variables like $x$ satisfy the relation in $\mathscr{R}_U$, we define a function $\psi:\mathscr{R} \rightarrow \mathscr{R}_U$. By letting $\psi(r) = r_U$ we represent a relation $r_U$ on $U$ by a relation $r$ on $V$.\\
+
+Let $P_k(V,\mathscr{R})$ be the set of all elements $p$ of $P(V,\mathscr{R})$ with $d(p) \leq k$. \\
+
+Define the valuation $v:P \rightarrow \mathbb{Z}_2$ by the following properties:\\
+
+$(\text{a})$ $v(r(x_1,..,x_n)) = 1$ if $\varphi(x_1),..,\varphi(x_n) \in \psi(r)$ and $0$ otherwise.\\
+$(\text{b})$ $v$ is still a $\{\Rightarrow, \textbf{F}\}$-algebra homomorphism.\\
+$(\text{c}_\text{k})$ Suppose $p = (\forall x)q(x)$ has depth $k$. Put $V' = V \cup \{t\}$ where $t \notin V$. If for every extension $\varphi':V' \rightarrow U$ of $\varphi$ and for every $v_{k-1}:P_{k-1}(V, \mathscr{R})\rightarrow \mathbb{Z}_2$, such that $(\varphi',\psi,v_{k-1}')$ satisfy (a), (b) and $(\text{c}_\text{i})$, for all $i < k$, we have $v_{k-1}'(q(t))=1$, then $v(p) = 1$, otherwise $v(p) = 0$.\\  
+
+The idea is that $\forall x q(x)$ should be true if and only if for every possible interpretation $t$ $q(t)$ is still true at depth $k-1$, where $t$ is a new variable and thus interpreting $t$ differently in $U$ changes only $t$. 
+
+\begin{problem}
+Given $(U, \varphi, \psi)$ there is exactly one function $v:P \rightarrow \mathbb{Z}_2$ satisfying (a), (b) and $(\text{c}_\text{k})$ for all $k$. 
+\end{problem}
+
+\begin{proof}
+Let $w$ and $v$ both be functions which satistfy (a), (b) and $(\text{c}_\text{k})$ for all $k$. Let $p \in P$ at depth $k=0$. By (a), $w(p) = v(p)$. Suppose $v = w$ up to depth $k-1$. Let $p \in P$ at depth $k=0$. 
+\end{proof}
+
+\end{document}
