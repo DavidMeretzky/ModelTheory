@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{lemmastyle}
+
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{theoremstyle}
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+\setlength\parindent{0pt}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 4 Predicate Calculus \\
+Section 4 Properties of $Pred(V, \mathscr{R})$ \\
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+December 30, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{\roman{footnote}}%{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+Recall that the logic called the First Order Predicate Calculus is comprised of an infinite set of variables $V$, a set of relation symbols $\mathscr{R}$, which together yeild a set of generators of the form $r(x_1,...,x_n)$, where $r \in \mathscr{R}$ and each $x_i \in V$ of a free $\{\textbf{F}, \Rightarrow, (\forall x) | x \in V\}$-algebra, called $\widetilde{P}(V,\mathscr{R})$. We call the factor algebra by the equivalence relation detailed in Chapter 4 Section 1 $P(V,\mathscr{R})$. When we equip $P(V,\mathscr{R})$ with semantics and syntax constructed in the previous two sections and denote the logic $Pred(V,\mathscr{R})$. 
+
+\begin{definition}
+A predicate $p$ is called a sentence if $var(p) = \emptyset$, that is, $p$ has no unbound variables. Otherwise we call $p$ a fragment. 
+\end{definition}
+
+Note that this corresponds to our intuitive notion. Not that the following is a sentence: ``For all deltas, there exists an epsilon." This is an honest to god sentence since both variables delta and epsilon are quantified over. The following is not strictly: ``For all clocks, rabbit." We can fix this as follows: ``For all clocks, a rabbit is late." The word ``a" now plays the role of the the existencial quantifier. \\
+
+What is the proper notion of morphism for $\{\textbf{F}, \Rightarrow, (\forall x) | x \in V\}$-algebras? The reliance of the quantifiers on the set of variables $V$ implies that the variables of the two logics must be the same.\\
+
+It turns out that homomorphism is too strict to be of use. Let $\phi$ be a homomorphism between two such algebras, $P_1$, and $P_2$. Let $p(x),q(y) \in P_1$, then $$\phi((\forall x)p(x) \Rightarrow q(x)) =\phi((\forall x)p(x)) \Rightarrow \phi(q(x)) =  ((\forall x)\phi(p(x))) \Rightarrow \phi(q(x)).$$ By definition, $\phi$ may not interact with quantifiers, $\textbf{F}$, or $\Rightarrow$. Thus the only parts of the predicate that it can interact with are variables (bound or unbound) and relation symbols.\\
+
+On a high level, we would like morphisms to preserve the meaning of the predicate. Barnes and Mack have little to say on how relation symbols change.\\
+
+I think there are probably some easy contradictions that one runs into if we allow homomorphisms to change the arity of a relation symbol.  
+
+\begin{enumerate}
+\item Can $\{\textbf{F}, \Rightarrow, (\forall x) | x \in V\}$-algebra homomorphisms alter relation symbols at all?
+\item Must $\{\textbf{F}, \Rightarrow, (\forall x) | x \in V\}$-algebra homomorphisms preserve the arity of the relation symbol?
+\end{enumerate}
+
+Barnes and Mack have more to say regarding the behavior of homomorphisms with respect to variables. To be even close to interesting, homomorphisms must be able to interchange variables. Suppose $\phi$ sends $x$ to $y$ and fixes all relation symbols. Then if $x$ is bound in a predicate $p$, we run into issues. Computing, $$\phi((\forall x)p(x)) = (\forall x)\phi(p(x)) = (\forall x)p(y),$$ we see that the homomorphism sends a sentence to a fragment.\\
+
+Barnes and Mack give the following definition which allows for greater flexibility. 
+
+\begin{definition}
+Let $P_1 = P(V_1,\mathscr{R}^{(1)})$ and $P_2 = P(V_2,\mathscr{R}^{(2)})$. A \textit{semi-homomorphism} $(\alpha,\beta):(P_1,V_1) \rightarrow (P_2,V_2)$ is a pair of maps $\alpha:P_1 \rightarrow P_2$, $\beta:V_1 \rightarrow V_2$ such that 
+\begin{enumerate}
+\item $\beta(V_1)$ is infinite. 
+\item $\alpha$ is an $\{F, \Rightarrow\}$-algebra homomorphism, and 
+\item $\alpha((\forall x)p) = (\forall x')\alpha(p)$ where $x' = \beta(x)$.  
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+Let $(\alpha,\beta):(P_1,V_1) \rightarrow (P_2,V_2)$ be a semi-homomorphism. Let $p \in P_1$ and suppose that $x \in V_1-var(p)$. Then $\beta(x) \notin var(\alpha(p))$.  
+\end{lemma}
+
+\begin{proof}
+%If $\beta(x) \in var(\alpha(p))$, then $\beta(x) \notin var((\forall \beta(x))\alpha(p))$. But $\alpha((\forall x)p) = (\forall \beta(x))\alpha(p)$ and therefore, $\beta(x) \notin var(\alpha((\forall x)p))$ but since $x \in V_1-var(p)$ we have that $var((\forall x)p) = var(p)$, thus $var((\forall \beta(x))\alpha(p)) = var(\alpha(p)) - \beta(x)$
+\end{proof}
+
+
+\end{document}

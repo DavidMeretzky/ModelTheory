@@ -1,0 +1,162 @@
+\documentclass{article}
+
+\usepackage{algorithmic, amsmath, amsthm, amsfonts, amssymb,commath, enumerate, tikz, tikz-cd, color, mathrsfs} %tikz is for drawing lattices %tikz-cd is for commutative diagrams
+															%color is for making notes in red 
+															%mathrsfs is for power set font
+%\usepackage[mathscr]{eucal} %mathscr gives nice script fonts
+
+\newtheoremstyle{problemstyle}  % <name> This is my problemstyle. use begin{problem}.
+        {12pt}                                               % <space above>
+        {}                                               % <space below>
+        {}                               % <body font>
+        {}                                                  % <indent amount}
+        {\bfseries}                 % <theorem head font>
+        {\normalfont\bfseries.}         % <punctuation after theorem head>
+        {.5em}                                          % <space after theorem head>
+        {}                                                  % <theorem head spec (can be left empty, meaning `normal')>
+
+
+\theoremstyle{problemstyle}
+
+\newtheorem{problem}{Problem}
+
+\theoremstyle{lemmastyle}
+
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{theoremstyle}
+
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{problemstyle}
+
+\newtheorem{definition}{Definition}
+
+\setlength\parindent{0pt}
+
+\title{ \vspace{-10ex} %uncomment to remove vertical space
+%title of assignment goes here e.g. "Math 721 Homework 3"
+An Algebraic Introduction to Mathematical Logic\\
+Chapter 4 Predicate Calculus \\
+Section 3 Proof in $Pred(V, \mathscr{R})$ \\
+}
+
+
+\author{David L. Meretzky
+}
+
+
+\date{%date assignment is due goes here
+December 29, 2018
+} 
+
+
+\renewcommand*{\thefootnote}{\roman{footnote}}%{$\dagger$} %changes default footnote marking to a dagger instead of a number (numbers are sometimes mistaken for citations)
+
+\begin{document}
+
+\maketitle
+
+We will denote the logic called the First Order Predicate Calculus on $(V,\mathscr{R})$ by $Pred(V,\mathscr{R})$. Now we will have to define the semantics for the logic. 
+
+\begin{definition}
+We define the axioms of $Pred(V,\mathscr{R})$ to be\\
+$\mathscr{A}_1 = \{p\Rightarrow (q\Rightarrow p)|p,q,r \in P(V,\mathscr{R})\}$,\\
+$\mathscr{A}_2 = \{p\Rightarrow (q\Rightarrow r) \Rightarrow ((p \Rightarrow q) \Rightarrow (p \Rightarrow r)) |p,q \in P(V,\mathscr{R})\}$,\\
+$\mathscr{A}_3 = \{\sim \ \sim p\Rightarrow p|p \in P(V,\mathscr{R})\}$,\\
+$\mathscr{A}_4 = \{(\forall x)(p\Rightarrow q)\Rightarrow (p \Rightarrow (\forall x) q)|p,q \in P(V,\mathscr{R}), x\notin var(p)\}$\footnote{var(p) denotes all free variables of $p$, that is all unquantified variables.},\\
+$\mathscr{A}_5 = \{(\forall x)p(x)\Rightarrow p(y)|p(x) \in P(V,\mathscr{R}), y \in V\}.$
+\end{definition}
+
+Let $(U,\varphi, \psi, v)$ be an interpretation.\\
+
+Recall the following 3 conditions:\\
+(a) If $r \in \mathscr{R}$ and $x_1,...,x_n \in V$ then $v(r(x_1,...,x_n))=1$ if $(\varphi x_1,...,\varphi x_n) \in \psi r$, and $0$ otherwise.\\
+(b) $v$ is an $\{F, \Rightarrow\}$-algebra homomorphism.\\
+$(\text{c}_\text{k})$ Suppose $p = (\forall x)q(x)$ has depth $k$. Put $V' = V \cup \{t\}$ where $t \notin V$. If for every extension $\varphi':V' \rightarrow U$ of $\varphi$ and for every $v_{k-1}:P_{k-1}(V, \mathscr{R})\rightarrow \mathbb{Z}_2$, such that $(\varphi',\psi,v_{k-1}')$ satisfy (a), (b) and $(\text{c}_\text{i})$, for all $i < k$, we have $v_{k-1}'(q(t))=1$, then $v(p) = 1$, otherwise $v(p) = 0$.
+
+\begin{problem}
+Show that every axiom of $Pred(V, \mathscr{R})$ is a tautology. 
+\end{problem}
+
+\begin{proof}
+For $\mathscr{A}_1$, $\mathscr{A}_2$, and $\mathscr{A}_3$ refer to the notes for Chapter 2 Section 3.\\
+
+For $\mathscr{A}_4$, note by the definition that $(\forall x)(p\Rightarrow q)$ is $(\forall x)p\Rightarrow (\forall x)q$. Since $x \notin var(p)$, then no matter how $t$ is interpreted, $v(p) = v((\forall x)p)$. We compute, 
+
+\begin{align*}
+v(((\forall x)p\Rightarrow (\forall x)q)\Rightarrow (p \Rightarrow (\forall x) q)) =&  \\ 
+1+v((\forall x)p\Rightarrow (\forall x)q)(1+v(p \Rightarrow (\forall x) q))  =&\\
+1+(1+v((\forall x)p)(1+v((\forall x)q)))(1+(1+v(p)(1+v((\forall x) q)))))  =& \\
+1+(1+v(p)(1+v((\forall x)q)))(1+(1+v(p)(1+v((\forall x) q)))). 
+\end{align*}
+Case 1: If $v(p) = 0$ we obtain 
+\begin{align*}
+1+(1+v(p)(1+v((\forall x)q)))(1+(1+v(p)(1+v((\forall x) q)))) =& \\
+1+(1+0(1+v((\forall x)q)))(1+(1+0(1+v((\forall x) q)))) =& \\
+1+(1)(1+(1)) =& \\
+1+(1+1) =& \  1.
+\end{align*}
+Case 2: If $v(p) = 1$ we obtain 
+\begin{align*}
+1+(1+v(p)(1+v((\forall x)q)))(1+(1+v(p)(1+v((\forall x) q)))) =& \\
+1+(1+(1+v((\forall x)q)))(1+(1+(1+v((\forall x) q)))).   \ \ & 
+\end{align*}
+Case 2a: If $v((\forall x)q) = 1$ then 
+\begin{align*}
+1+(1+(1+v((\forall x)q)))(1+(1+(1+v((\forall x) q)))) =& \\
+1+(1+(1+1))(1+(1+(1+1))) =& \\
+1+(1+(0))(1+(1+(0))) =& \\
+1+(1)(1+1) =& \\
+1+(1)(0) =& \ 1 
+\end{align*}
+Case 2b: If $v((\forall x)q) = 0$ then 
+\begin{align*}
+1+(1+(1+v((\forall x)q)))(1+(1+(1+v((\forall x) q)))) =& \\
+1+(1+(1+0))(1+(1+(1+0))) =& \\
+1+(1+(1))(1+(1+(1))) =& \\
+1+(1+1)(1+(1+1)) =& \\
+1+(0)(1) =& \ 1 
+\end{align*}
+It follows that $\mathscr{A}_4$ is a tautology. \\
+
+To show $\mathscr{A}_5$ is a tautology, let $t \notin V$, if $y$ is interpreted in such a way that $\varphi y \in U$ makes $v_{k-1}'(p(y)) = 0$, then letting $\varphi'(t) = \varphi(y)$ in $U$ it must also follow that $v_{k-1}'(p(t)) = 0$. Then by definition $v((\forall x)p(x)) = 0$. If $y$ must be interpreted so that $v_{k-1}'(p(y)) = 1$, we have still the possibility that $v((\forall x)p(x)) = 0$ since $\varphi$ may not be surjective on $U$. In particular, $\varphi t \in U$ may be such that $v_{k-1}'(p(t)) = 0$. Now since $v$ is a $\{F, \Rightarrow\}$-algebra homomorphism, it follows that 
+
+$$v((\forall x)p(x)\Rightarrow p(y)) = 1+v((\forall x)p(x))(1+v(p(y))).$$
+
+If $v(p(y)) = 0$ then $v((\forall x)p(x)) = 0$ and the expression values to $1$. If  $v(p(y)) = 1$, then the expression also values to $1$ regardless of the value of $(\forall x)p(x)$. 
+\end{proof}
+
+The semantics of the logic $Pred(V, \mathscr{R})$ is similar to semantics for the logic $Prop(V)$, however, there is one additional rule, call the rule of Generalization, that must be implemented to handle quantification. Suppose we exhibit proof of $p(x)$ but the specifics of $x$ are not used in the proof, that is $x$ is general, then we may also deduce $(\forall x)p(x)$. The following is an inductive definition. 
+
+\begin{definition}
+Let $A \subseteq P$, $p \in P$. A \textit{proof of length $n$} of $p$ from $A$ is a sequence $p_1$,...,$p_n$ of $n$ elements of $P$ such that $p_n = p$, the sequence $p_1$,...,$p_{n-1}$ is a proof of length $n-1$ of $p$ from $A$ and 
+\begin{enumerate}
+\item $p_n \in \mathscr{A} \cup A$, or
+\item $p_i = p_j \Rightarrow p_n$, for some $i,j < n$, or
+\item $p_n = (\forall x)w(x)$ and some subsequence $p_{k_1}$,...,$p_{k_r}$, of $p_1$,...,$p_{n-1}$ is a proof of length less than $n$ of $w(x)$ from a subset $A_0$ of $A$ such that $x \notin var(A_0)$.
+\end{enumerate}
+\end{definition}
+
+\begin{problem}
+Construct a proof in $Pred(V,\mathscr{R})$ of $(\forall x)(\forall y)p(x,y)$ from $\{(\forall y)(\forall x)p(x,y)\}.$
+\end{problem}
+
+\begin{proof}
+By $\mathscr{A}_5$,
+$$p_1 = (\forall y)(\forall x)p(x,y) \Rightarrow (\forall x)p(x,y)$$
+By assumption,
+$$p_2 = (\forall y)(\forall x)p(x,y).$$
+By modus ponens, 
+$$p_3 =(\forall x)p(x,y).$$
+Then by $\mathscr{A}_5$ again, 
+$$p_4 = (\forall x)p(x,y) \Rightarrow p(x,y).$$
+By modus ponens, 
+$$p_5 = p(x,y).$$
+Since $y \notin var(\{(\forall y)(\forall x)p(x,y)\})$,\footnote{var only accounts for unbound variables} we may use generalization
+$$p_6 = (\forall y)p(x,y).$$
+Since $x \notin var(\{(\forall y)(\forall x)p(x,y)\})$, we may use generalization
+$$p_7 = (\forall x)(\forall y)p(x,y).$$
+\end{proof}
+
+\end{document}
