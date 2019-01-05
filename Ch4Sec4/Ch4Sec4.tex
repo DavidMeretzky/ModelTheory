@@ -32,6 +32,10 @@
 
 \newtheorem{definition}{Definition}
 
+\theoremstyle{problemstyle}
+
+\newtheorem{corollary}{Corollary}
+
 \setlength\parindent{0pt}
 
 \title{ \vspace{-10ex} %uncomment to remove vertical space
@@ -92,11 +96,24 @@ Let $P_1 = P(V_1,\mathscr{R}^{(1)})$ and $P_2 = P(V_2,\mathscr{R}^{(2)})$. A \te
 \end{definition}
 
 \begin{lemma}
+$var((\forall x)p) = var(p)$ iff $x \notin var(p)$. 
+\end{lemma}
+
+\begin{proof}
+Suppose that $x \in var(p)$ then $var((\forall x)p) \neq var(p)$ since $x \notin var((\forall x)p)$ but $x \in var(p)$. Suppose now that $x \notin var(p)$. Then $var(p)-\{x\} = var(p)$. Since $var((\forall x)p) = var(p) - \{x\}$ the result follows. 
+\end{proof}
+
+\begin{corollary}
+Suppose that $x \neq y$, then $(\forall x)p = (\forall y)p$ iff $x,y \notin var(p)$ 
+\end{corollary}
+
+\begin{lemma}
 Let $(\alpha,\beta):(P_1,V_1) \rightarrow (P_2,V_2)$ be a semi-homomorphism. Let $p \in P_1$ and suppose that $x \in V_1-var(p)$. Then $\beta(x) \notin var(\alpha(p))$.  
 \end{lemma}
 
 \begin{proof}
-%If $\beta(x) \in var(\alpha(p))$, then $\beta(x) \notin var((\forall \beta(x))\alpha(p))$. But $\alpha((\forall x)p) = (\forall \beta(x))\alpha(p)$ and therefore, $\beta(x) \notin var(\alpha((\forall x)p))$ but since $x \in V_1-var(p)$ we have that $var((\forall x)p) = var(p)$, thus $var((\forall \beta(x))\alpha(p)) = var(\alpha(p)) - \beta(x)$
+Since $\beta(V_1)$ is infinite there exists a $y' \in \beta(V_1)$ such that $y' \notin \beta(var(p))$ and $y' \neq \beta(x)$. Choosing $y \in V_1$ such that $\beta(y) = y'$ it follows by the corrolary that $(\forall x)p = (\forall y)p$. Then we may compute $$(\forall \beta(x))p = \alpha((\forall x) p) = \alpha((\forall y) p)=(\forall \beta(y))p$$
+From which we may conclude by the corollary that $\beta(x) \notin var(\alpha(p))$. 
 \end{proof}
 
 
