@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  5 JAN 2019 14:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 FEB 2019 21:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,18 +465,26 @@ File: pgflibraryarrows.meta.code.tex 2015/05/13 v3.0.1a (rcs-revision 1.13)
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
 )
-\c@problem=\count123
+(/usr/local/texlive/2016/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\labelindent=\skip51
+\enit@outerparindent=\dimen164
+\enit@toks=\toks39
+\enit@inbox=\box39
+\enitdp@description=\count123
+)
+\c@problem=\count124
 
 
 Package amsthm Warning: Unknown theoremstyle `lemmastyle' on input line 23.
 
-\c@lemma=\count124
+\c@lemma=\count125
 
 Package amsthm Warning: Unknown theoremstyle `theoremstyle' on input line 27.
 
-\c@theorem=\count125
-\c@definition=\count126
-\c@corollary=\count127
+\c@theorem=\count126
+\c@definition=\count127
+\c@corollary=\count128
 (./Ch4Sec4.aux)
 \openout1 = `Ch4Sec4.aux'.
 
@@ -495,17 +503,17 @@ LaTeX Font Info:    ... okay on input line 60.
  ABD: EveryShipout initializing macros
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count128
-\scratchdimen=\dimen164
-\scratchbox=\box39
-\nofMPsegments=\count129
-\nofMParguments=\count130
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count131
-\MPscratchDim=\dimen165
-\MPnumerator=\count132
-\makeMPintoPDFobject=\count133
-\everyMPtoPDFconversion=\toks40
+\scratchcounter=\count129
+\scratchdimen=\dimen165
+\scratchbox=\box40
+\nofMPsegments=\count130
+\nofMParguments=\count131
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count132
+\MPscratchDim=\dimen166
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
+\everyMPtoPDFconversion=\toks41
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -568,11 +576,6 @@ LaTeX Font Info:    Try loading font information for U+rsfs on input line 62.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
@@ -587,15 +590,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
+
+ []
+
 [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
 
-Overfull \hbox (14.28918pt too wide) in paragraph at lines 90--92
+Overfull \hbox (14.28918pt too wide) in paragraph at lines 94--96
 []\OT1/cmr/bx/n/10 Definition 2. []\OT1/cmr/m/n/10 Let $\OML/cmm/m/it/10 P[] \O
 T1/cmr/m/n/10 = \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 V[]; \U/rsf
 s/m/n/10 R[]\OT1/cmr/m/n/10 )$ and $\OML/cmm/m/it/10 P[] \OT1/cmr/m/n/10 = \OML
@@ -603,32 +611,37 @@ s/m/n/10 R[]\OT1/cmr/m/n/10 )$ and $\OML/cmm/m/it/10 P[] \OT1/cmr/m/n/10 = \OML
 /m/n/10 )$. A \OT1/cmr/m/it/10 semi-homomorphism
  []
 
-[2] (./Ch4Sec4.aux) ) 
+[2] [3] (./Ch4Sec4.aux) ) 
 Here is how much of TeX's memory you used:
- 13494 strings out of 493014
- 276176 string characters out of 6133351
- 313992 words of memory out of 5000000
- 16754 multiletter control sequences out of 15000+600000
- 13957 words of font info for 57 fonts, out of 8000000 for 9000
+ 13775 strings out of 493014
+ 280947 string characters out of 6133351
+ 322124 words of memory out of 5000000
+ 17030 multiletter control sequences out of 15000+600000
+ 14264 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,8n,84p,664b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pf
-b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
-Output written on Ch4Sec4.pdf (2 pages, 135972 bytes).
+ 56i,8n,84p,664b,305s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr17.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on Ch4Sec4.pdf (3 pages, 181043 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
